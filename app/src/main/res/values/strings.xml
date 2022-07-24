@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CCTVStreaming</string>
+    <string name="type_email">Type your email</string>
+    <string name="type_password">Type your password</string>
 </resources>

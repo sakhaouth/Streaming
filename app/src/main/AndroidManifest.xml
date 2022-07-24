@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cctvstreaming">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CCTVStreaming">
         <activity
+            android:name=".SchoolList"
+            android:parentActivityName=".MainActivity"
+            android:label="Shool List"
+            android:exported="false" />
+        <activity
+            android:name=".MediaPlayer"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".MainActivity"
+            android:label="LogIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

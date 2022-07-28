@@ -12,10 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CCTVStreaming">
         <activity
-            android:name=".SchoolList"
-            android:parentActivityName=".MainActivity"
-            android:label="Shool List"
+            android:name=".HomePage"
             android:exported="false" />
+        <activity
+            android:name=".SubDistrictList"
+            android:exported="false" />
+        <activity
+            android:name=".SchoolList"
+            android:exported="false"
+            android:label="Shool List"
+            android:parentActivityName=".HomePage" />
         <activity
             android:name=".MediaPlayer"
             android:exported="false"
@@ -23,8 +29,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:label="LogIn"
-            android:exported="true">
+            android:exported="true"
+            android:label="LogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

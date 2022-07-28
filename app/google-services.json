@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "269264802739",
+    "project_id": "cctvstreaming-25894",
+    "storage_bucket": "cctvstreaming-25894.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269264802739:android:19ea3ffd2aea7a1bc171c6",
+        "android_client_info": {
+          "package_name": "com.example.cctvstreaming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269264802739-otbek4j8m9fpd725381lpdlhd7v4fjd9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cctvstreaming",
+            "certificate_hash": "03a12e115af514149d9f94472fb26dc47a5a1f45"
+          }
+        },
+        {
+          "client_id": "269264802739-9vv1d8kq0tiigkcsnopc73pdqhgeigj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM8HhwEFNZjeWWnIJcDbDn8Nc6sLSW6g4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269264802739-9vv1d8kq0tiigkcsnopc73pdqhgeigj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

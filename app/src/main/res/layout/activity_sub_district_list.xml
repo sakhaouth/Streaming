@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MediaPlayer">
-
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:show_buffering="when_playing"
-
-        android:id="@+id/player_view" />
-
+    tools:context=".SubDistrictList">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

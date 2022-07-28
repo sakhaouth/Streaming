@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     TextInputLayout emailTextView,passwordTextView;
     private TextView messageTexView,loginTextView;
@@ -30,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
         loginButton = (Button) findViewById(R.id.client_login_button);
         messageTexView = (TextView) findViewById(R.id.client_login_message_view);
         loginTextView = (findViewById(R.id.client_login_text));
+//        ArrayList<String> cameraNames = new ArrayList<>();
+//        cameraNames.add("Physics Lab");
+//        cameraNames.add("Bioa Lab");
+//        School school = new School("Keronkhal School and College","Cumilla","Chandina",cameraNames);
+//        DatabaseController.saveSchool(school);
+//        school = new School("Dr. Firoza Girls High School","Cumilla","Chandina",cameraNames);
+//        DatabaseController.saveSchool(school);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,9 +72,11 @@ public class MainActivity extends AppCompatActivity {
     private void callDatabase(String email, String password) {
         if(email.compareTo("shn065@gmail.com") == 0 && password.compareTo("noman065") == 0)
         {
-            String uri = "https://media.geeksforgeeks.org/wp-content/uploads/20201217192146/Screenrecorder-2020-12-17-19-17-36-828.mp4?_=1";
-            Intent intent = new Intent(getApplicationContext(),SchoolList.class);
+
+            Intent intent = new Intent(getApplicationContext(),HomePage.class);
             //intent.putExtra("uri",uri);
+            intent.putExtra("dis","Cumilla");
+            intent.putExtra("sub","Chandina");
             startActivity(intent);
         }
         else

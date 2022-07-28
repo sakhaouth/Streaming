@@ -1,5 +1,9 @@
 package com.example.cctvstreaming;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.text.Layout;
 import android.util.Log;
@@ -12,12 +16,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class SchoolListAdaptor extends RecyclerView.Adapter<SchoolListAdaptor.ViewHolder> {
     ArrayList<School> schools;
+    private Context context;
+    public SchoolListAdaptor(Context context)
+    {
+        schools = new ArrayList<>();
+        this.context = context;
+    }
     public SchoolListAdaptor(ArrayList<School> schools)
     {
         this.schools = schools;
@@ -31,17 +42,24 @@ public class SchoolListAdaptor extends RecyclerView.Adapter<SchoolListAdaptor.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.schoolName.setText(schools.get(position).getName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String uri = schools.get(position).getLink();
-                Intent intent = new Intent(holder.itemView.getContext(),MediaPlayer.class);
-                intent.putExtra("uri",uri);
-                holder.itemView.getContext().startActivity(intent);
+
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.camera_list);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                RecyclerView recyclerView = dialog.findViewById(R.id.camera_list_recycler_view);
+                CameraListAdaptor cameraListAdaptor = new CameraListAdaptor(schools.get(position).getCameraNames(),schools.get(position).getLink());
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                recyclerView.setAdapter(cameraListAdaptor);
+                dialog.show();
+
+
             }
         });
         holder.itemView.startAnimation(animation);
@@ -60,5 +78,10 @@ public class SchoolListAdaptor extends RecyclerView.Adapter<SchoolListAdaptor.Vi
             schoolName = (TextView) itemView.findViewById(R.id.school_name);
 
         }
+    }
+    public void setSchools(ArrayList<School> schools)
+    {
+        this.schools = schools;
+        notifyDataSetChanged();
     }
 }

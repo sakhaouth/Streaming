@@ -24,24 +24,35 @@ public class MediaPlayer extends AppCompatActivity {
     private ExoPlayer player;
     private PlayerView playerView;
     private String uri;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        player.stop();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_player);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         try {
             uri = (String) getIntent().getStringExtra("uri");
             player = new ExoPlayer.Builder(this).build();
             playerView = (PlayerView) findViewById(R.id.player_view);
             playerView.setPlayer(player);
+            Log.d("link",uri);
             MediaItem mediaItem = MediaItem.fromUri(uri);
             player.setMediaItem(mediaItem);
             player.prepare();
             player.play();
+
         }
         catch (Exception exception)
         {
             Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();
         }
+
 
 
 

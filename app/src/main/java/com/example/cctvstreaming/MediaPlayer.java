@@ -1,5 +1,6 @@
 package com.example.cctvstreaming;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
@@ -15,6 +16,8 @@ import android.widget.VideoView;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.PlaybackException;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
@@ -25,11 +28,7 @@ public class MediaPlayer extends AppCompatActivity {
     private PlayerView playerView;
     private String uri;
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        player.stop();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,26 @@ public class MediaPlayer extends AppCompatActivity {
             player.setMediaItem(mediaItem);
             player.prepare();
             player.play();
+            player.addListener(new Player.Listener() {
+                @Override
+                public void onPlayerError(PlaybackException error) {
+                    Toast.makeText(MediaPlayer.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onRenderedFirstFrame() {
+                    Toast.makeText(MediaPlayer.this,"Streaming Started",Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onPlayerErrorChanged(@Nullable PlaybackException error) {
+
+                }
+
+
+
+            });
+
 
         }
         catch (Exception exception)
@@ -54,10 +73,18 @@ public class MediaPlayer extends AppCompatActivity {
         }
 
 
-
-
-
-
-
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        player.pause();
+        player.release();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        player.pause();
+    }
+
 }

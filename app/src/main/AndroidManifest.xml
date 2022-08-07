@@ -16,12 +16,13 @@
             android:exported="false" />
         <activity
             android:name=".SubDistrictList"
+            android:parentActivityName=".HomePage"
+            android:label="Sub Districts"
             android:exported="false" />
         <activity
             android:name=".SchoolList"
             android:exported="false"
-            android:label="Shool List"
-            android:parentActivityName=".HomePage" />
+            android:label="Shool List" />
         <activity
             android:name=".MediaPlayer"
             android:exported="false"

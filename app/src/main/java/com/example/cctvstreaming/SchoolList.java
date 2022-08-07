@@ -1,5 +1,6 @@
 package com.example.cctvstreaming;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +30,7 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_school_list);
         progressBar = (ProgressBar) findViewById(R.id.schoolListProgressBar);
         String dis = (String) getIntent().getStringExtra("dis");
@@ -52,7 +56,7 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
         schools.add(school);
 
         DatabaseController.saveSchool(school);
-        User user = new User("aa","Cumilla","Chandina","dc");
+        User user = new User("aa","Cumilla","Chandina","dc","222");
 
 
 
@@ -63,6 +67,20 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
 
         schoolListAdaptor.setSchools(schools);
         progressBar.setVisibility(View.GONE);
+
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Log.d("okay",String.valueOf(R.id.home));
+        if(R.id.home == 2131362076)
+        {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
 
     }
 }

@@ -64,6 +64,32 @@ public class DatabaseController {
                     }
                 });
     }
+    public static void getSubDistricts(String district,SubDistrictInterface subDistrictInterface)
+    {
+        ArrayList<SubDistrict> subDistricts = new ArrayList<>();
+        firebaseFirestore.collection(district)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<DocumentSnapshot> documentSnapshots = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
+                        for(DocumentSnapshot snapshot : documentSnapshots)
+                        {
+                            subDistricts.add(new SubDistrict(snapshot.getId()));
+                            Log.d("data",snapshot.getId());
+
+                        }
+                        subDistrictInterface.getSubDistrict(subDistricts);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+    }
+
     public static void getSchool(String district,String subDistrict,SchoolListInterface schoolListInterface)
     {
         ArrayList<School> schools = new ArrayList<>();

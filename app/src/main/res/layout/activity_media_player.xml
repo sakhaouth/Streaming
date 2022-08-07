@@ -11,7 +11,10 @@
         android:layout_height="match_parent"
         app:show_buffering="when_playing"
         app:hide_on_touch="true"
-
+        app:use_controller="true"
+        android:keepScreenOn="true"
+        android:layout_margin="5dp"
+        app:controller_layout_id="@layout/custom_player_control_view"
         android:id="@+id/player_view" />
 
 

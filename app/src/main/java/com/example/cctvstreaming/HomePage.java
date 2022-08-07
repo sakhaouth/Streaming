@@ -29,7 +29,7 @@ public class HomePage extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),SchoolList.class);
                 //intent.putExtra("uri",uri);
                 intent.putExtra("dis","Cumilla");
-                intent.putExtra("sub","Chandina");
+                intent.putExtra("sub","Cumilla Sadar");
                 startActivity(intent);
             }
         });

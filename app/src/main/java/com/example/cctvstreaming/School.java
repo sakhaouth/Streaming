@@ -12,6 +12,7 @@ public class School implements Serializable {
     private String district,subDistrict;
     private ArrayList<String> cameraNames;
     String ip = "192.168.0.15";
+    private String hudai = "hudai";
     public School(String name,String district, String subDistrict,ArrayList<String> cameraNames)
     {
         this.name = name;

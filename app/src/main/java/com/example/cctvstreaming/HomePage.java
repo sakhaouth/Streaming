@@ -26,10 +26,9 @@ public class HomePage extends AppCompatActivity {
         streamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SchoolList.class);
+                Intent intent = new Intent(getApplicationContext(),SubDistrictList.class);
                 //intent.putExtra("uri",uri);
                 intent.putExtra("dis","Cumilla");
-                intent.putExtra("sub","Cumilla Sadar");
                 startActivity(intent);
             }
         });

@@ -7,12 +7,16 @@ public class User implements Serializable {
     private String district;
     private String subDistrict;
     private String recognition;
-    public User(String name,String district, String subDistrict, String recognition)
+    private String number;
+    private String status;
+    public User(String name,String district, String subDistrict, String recognition,String number)
     {
         this.name = name;
         this.district = district;
         this.subDistrict = subDistrict;
         this.recognition = recognition;
+        this.number = number;
+        this.status = "ok";
     }
 
     public void setSubDistrict(String subDistrict) {
@@ -45,5 +49,21 @@ public class User implements Serializable {
 
     public void setRecognition(String recognition) {
         this.recognition = recognition;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

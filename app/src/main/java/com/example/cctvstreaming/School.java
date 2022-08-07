@@ -32,7 +32,7 @@ public class School implements Serializable {
         this.subDistrict = subDistrict;
         this.cameraNames = cameraNames;
         this.link = link;
-        Log.d("message",link);
+        Log.d("message12223",link);
 
     }
     public String getName() {

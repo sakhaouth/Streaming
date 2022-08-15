@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void callDatabase(String email, String password) {
-        if(email.compareTo("shn065@gmail.com") == 0 && password.compareTo("noman065") == 0)
+        if(email.compareTo("dccomilla@gmail.com") == 0 && password.compareTo("dccomilla") == 0)
         {
 
             Intent intent = new Intent(getApplicationContext(),HomePage.class);

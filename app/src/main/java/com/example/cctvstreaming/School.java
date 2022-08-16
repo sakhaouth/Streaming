@@ -33,6 +33,7 @@ public class School implements Serializable {
         this.subDistrict = subDistrict;
         this.cameraNames = cameraNames;
         this.link = link;
+
         Log.d("message",link);
         this.principal = new String();
 

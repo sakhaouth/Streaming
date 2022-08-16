@@ -22,7 +22,7 @@
         <activity
             android:name=".SchoolList"
             android:exported="false"
-            android:label="Shool List" />
+            android:label="School List" />
         <activity
             android:name=".MediaPlayer"
             android:exported="false"
@@ -32,7 +32,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="LogIn">
+            android:label="4L-Monitor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

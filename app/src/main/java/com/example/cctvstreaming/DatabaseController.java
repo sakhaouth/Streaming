@@ -46,6 +46,7 @@ public class DatabaseController {
     }
     public static void saveSchool(School school)
     {
+
         firebaseFirestore.collection(school.getDistrict())
                 .document(school.getSubDistrict())
                 .collection(school.getSubDistrict())

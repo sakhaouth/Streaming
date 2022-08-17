@@ -9,7 +9,37 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="false"
-        android:theme="@style/Theme.CCTVStreaming"></application>
+
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CCTVStreaming">
+        <activity
+            android:name=".HomePage"
+            android:exported="false" />
+        <activity
+            android:name=".SubDistrictList"
+            android:parentActivityName=".HomePage"
+            android:label="Sub Districts"
+            android:exported="false" />
+        <activity
+            android:name=".SchoolList"
+            android:exported="false"
+            android:label="Shool List" />
+        <activity
+            android:name=".MediaPlayer"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="LogIn">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>

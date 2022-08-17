@@ -11,8 +11,8 @@ public class School implements Serializable {
     private String link;
     private String district,subDistrict;
     private ArrayList<String> cameraNames;
-    String ip = "192.168.0.15";
-    private String hudai = "hudai";
+    private String ip = "65.2.11.221";
+    private String principal;
     public School(String name,String district, String subDistrict,ArrayList<String> cameraNames)
     {
         this.name = name;
@@ -23,6 +23,7 @@ public class School implements Serializable {
         link += this.district.replaceAll(" ","-").toLowerCase() + "-" + this.subDistrict.replaceAll(" ","-").toLowerCase() + "-";
         link += this.name.replaceAll(" ","-").toLowerCase();
         Log.d("message",link);
+        this.principal = new String();
 
     }
     public School(String name,String district, String subDistrict,ArrayList<String> cameraNames,String link)
@@ -32,7 +33,22 @@ public class School implements Serializable {
         this.subDistrict = subDistrict;
         this.cameraNames = cameraNames;
         this.link = link;
-        Log.d("message12223",link);
+
+        Log.d("message",link);
+        this.principal = new String();
+
+    }
+    public School(String name,String district, String subDistrict,ArrayList<String> cameraNames,String principal,String link)
+    {
+        this.name = name;
+        this.district = district;
+        this.subDistrict = subDistrict;
+        this.cameraNames = cameraNames;
+        link = "rtmp://"+ip+":1935/live/";
+        link += this.district.replaceAll(" ","-").toLowerCase() + "-" + this.subDistrict.replaceAll(" ","-").toLowerCase() + "-";
+        link += this.name.replaceAll(" ","-").toLowerCase();
+        Log.d("message",link);
+        this.principal = principal;
 
     }
     public String getName() {

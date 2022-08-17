@@ -4,6 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../home/sakhaouth/.gradle/caches/transforms-3/73cd8062e90d3aa90beae4fd102a3b7f/transformed/jetified-exoplayer-ui-2.18.1/res/layout/exo_player_control_view.xml" value="0.24739583333333334" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1625" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/drawable/base_gradient.xml" value="0.1625" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/drawable/ic_baseline_live_tv_24.xml" value="0.1945" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.1945" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.1945" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/drawable/login_shape.xml" value="0.201" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_home_page.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_main.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_media_player.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_school_list.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_signup.xml" value="0.2" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_splash_screean.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/activity_sub_district_list.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/camera_list.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/custom_player_control_view.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/layout/school_view.xml" value="0.153125" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1945" />
+        <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_media_player.xml" value="0.1" />
@@ -19,7 +39,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

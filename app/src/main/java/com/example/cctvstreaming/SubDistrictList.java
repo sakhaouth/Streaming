@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -24,6 +25,7 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
         district = (String) getIntent().getStringExtra("dis");
         recyclerView = (RecyclerView) findViewById(R.id.sub_district_recycler_view);
         progressBar = (ProgressBar) findViewById(R.id.sub_district_progressBar);
+        Log.d("district",district);
         fetchData(district);
         subDistrictListAdaptor = new SubDistrictListAdaptor(district);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

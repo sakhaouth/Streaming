@@ -56,7 +56,7 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
         schools.add(school);
 
         DatabaseController.saveSchool(school);
-        User user = new User("aa","Cumilla","Chandina","dc","222");
+//        User user = new User("aa","Cumilla","Chandina","dc","222");
 
 
 

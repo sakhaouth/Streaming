@@ -93,7 +93,7 @@ public class LogIn extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(LogIn.this,"User Logged In Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(),HomePage.class));
+                    startActivity(new Intent(getApplicationContext(),LayerAuthentication.class));
                 }else {
                     Toast.makeText(LogIn.this,"User Logging Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }

@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CCTVStreaming">
         <activity
+            android:name=".SubmitAccessForm"
+            android:exported="false" />
+        <activity
+            android:name=".LayerAuthentication"
+            android:exported="false" />
+        <activity
             android:name=".AddSchool"
             android:exported="false" />
         <activity

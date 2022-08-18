@@ -12,25 +12,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CCTVStreaming">
         <activity
+            android:name=".AddSchool"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomePage"
             android:exported="false" />
         <activity
-            android:name=".SubDistrictList"
-            android:parentActivityName=".HomePage"
-            android:label="Sub Districts"
+            android:name=".LogIn"
             android:exported="false" />
+        <activity
+            android:name=".SubDistrictList"
+            android:exported="false"
+            android:label="Sub Districts"
+            android:parentActivityName=".HomePage" />
         <activity
             android:name=".SchoolList"
             android:exported="false"
             android:label="School List" />
         <activity
             android:name=".MediaPlayer"
+            android:configChanges="orientation|screenSize"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreean"
             android:exported="true"
             android:label="4L-Monitor">
             <intent-filter>

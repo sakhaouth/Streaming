@@ -9,7 +9,9 @@ public class User implements Serializable {
     private String recognition;
     private String number;
     private String status;
-    public User(String name,String district, String subDistrict, String recognition,String number)
+    private String id;
+    private String email;
+    public User(String name,String district, String subDistrict, String recognition,String number,String id,String email)
     {
         this.name = name;
         this.district = district;
@@ -17,6 +19,24 @@ public class User implements Serializable {
         this.recognition = recognition;
         this.number = number;
         this.status = "ok";
+        this.id = id;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setSubDistrict(String subDistrict) {

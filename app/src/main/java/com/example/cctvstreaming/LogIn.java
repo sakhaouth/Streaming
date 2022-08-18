@@ -46,19 +46,24 @@ public class LogIn extends AppCompatActivity {
 //        DatabaseController.saveSchool(school);
 //        school = new School("Dr. Firoza Girls High School","Cumilla","Chandina",cameraNames);
 //        DatabaseController.saveSchool(school);
-
+//        User user = new User("Sakhaouth","X","Y","p","055","aa","kk");
+//        DatabaseController.saveUser(user);
+        DatabaseController.getDc("Comilla",getApplicationContext());
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"as",Toast.LENGTH_SHORT);
                 Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
                 startActivity(intent);
             }
         });
+//        DatabaseController.sendNotification("aa");
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email,password;
                 //email = emailTextView.getText().toString();
+
                 email = emailTextView.getEditText().getText().toString();
                 password = passwordTextView.getEditText().getText().toString();
                 if(TextUtils.isEmpty(email)) {

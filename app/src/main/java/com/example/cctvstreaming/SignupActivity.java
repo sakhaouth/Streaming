@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity{
     private TextInputLayout emailTextView,passwordTextView, confirmPassTextView;
     private TextView message;
     private Button signup,signin;

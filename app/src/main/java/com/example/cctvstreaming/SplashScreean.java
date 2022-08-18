@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,7 +18,7 @@ public class SplashScreean extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screean);
         mAuth = FirebaseAuth.getInstance();
-
+        Log.d("noman","kire");
         getSupportActionBar().hide();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -34,4 +35,5 @@ public class SplashScreean extends AppCompatActivity {
             }
         },4000);
     }
+
 }

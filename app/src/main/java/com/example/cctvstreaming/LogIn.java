@@ -87,6 +87,7 @@ public class LogIn extends AppCompatActivity {
     }
 
     private void callDatabase(String email, String password) {
+
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

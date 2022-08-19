@@ -1,8 +1,10 @@
 package com.example.cctvstreaming;
 
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable{
     private String name;
     private String district;
     private String subDistrict;
@@ -11,6 +13,9 @@ public class User implements Serializable {
     private String status;
     private String id;
     private String email;
+    private String about;
+    private String accessLabel;
+    private String institution;
     public User(String name,String district, String subDistrict, String recognition,String number,String id,String email)
     {
         this.name = name;
@@ -21,6 +26,44 @@ public class User implements Serializable {
         this.status = "ok";
         this.id = id;
         this.email = email;
+    }
+    public User(String name,String district, String subDistrict, String recognition,String number,String id,String email,String status,String about,String accessLabel,String institution)
+    {
+        this.name = name;
+        this.district = district;
+        this.subDistrict = subDistrict;
+        this.recognition = recognition;
+        this.number = number;
+        this.status = status;
+        this.id = id;
+        this.email = email;
+        this.about = about;
+        this.accessLabel = accessLabel;
+        this.institution = institution;
+    }
+
+    public String getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public String getAccessLabel() {
+        return accessLabel;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public void setAccessLabel(String accessLabel) {
+        this.accessLabel = accessLabel;
     }
 
     public String getEmail() {

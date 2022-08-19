@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Monitor</string>
+    <string name="app_name">CCTVStreaming</string>
     <string name="type_email">Type your email</string>
     <string name="type_password">Type your password</string>
     <string name="watch_stream">Watch Stream</string>
@@ -14,4 +14,27 @@
     <string name="already_account">Already have a Account?</string>
     <string name="type_password_2">Confirm your password</string>
     <string name="pass_no_match">Please Provide Same Password</string>
+    <string name="verify_text">Waiting for user verification.</string>
+    <string name="web_portal">Web Portal</string>
+    <string name="user_manual">User Manual</string>
+    <string name="welcome_note">Welcome Note</string>
+    <string name="request_access">Request Access</string>
+    <string name="fill_up">Please Fill up the form with correct information\n <color name="red">*</color> Required</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="designation">Designation</string>
+    <string name="about">About</string>
+    <string name="your_msg">Your Message</string>
+    <string name="upload_institute_image">Upload Institute Image</string>
+    <string name="check_info">All information is Checked Correct.</string>
+    <string name="submit">Submit</string>
+    <string name="grant_access">Grant Access</string>
+    <string name="request_list">List Of All Users Requesting for Access</string>
+    <string name="number">Phone Number</string>
+    <string-array name="access">
+        <item>DC</item>
+        <item>UNO</item>
+        <item>HEADMASTER</item>
+    </string-array>
 </resources>

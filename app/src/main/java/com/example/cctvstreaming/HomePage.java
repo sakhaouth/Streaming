@@ -28,6 +28,7 @@ public class HomePage extends AppCompatActivity {
     private ImageView imageView;
     private FirebaseAuth mAuth;
     Button addSchoolButton;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +39,9 @@ public class HomePage extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         logout = findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
-        Toast.makeText(getApplicationContext(),"jnsjldnf",Toast.LENGTH_SHORT);
-        DatabaseController.getDc("Comilla",getBaseContext());
+        user = (User) getIntent().getSerializableExtra("user");
+        Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
+//        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +55,32 @@ public class HomePage extends AppCompatActivity {
         streamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SubDistrictList.class);
-                //intent.putExtra("uri",uri);
-                intent.putExtra("dis","Comilla");
-                startActivity(intent);
+                if(user.getAccessLabel().compareToIgnoreCase("district") == 0)
+                {
+                    Intent intent = new Intent(getApplicationContext(),SubDistrictList.class);
+                    //intent.putExtra("uri",uri);
+                    intent.putExtra("dis",user.getDistrict());
+                    intent.putExtra("user",user);
+                    startActivity(intent);
+                }
+                if(user.getAccessLabel().compareToIgnoreCase("upozilla") == 0)
+                {
+                    Intent intent = new Intent(getApplicationContext(),SchoolList.class);
+                    //intent.putExtra("uri",uri);
+                    intent.putExtra("dis",user.getDistrict());
+                    intent.putExtra("sub",user.getSubDistrict());
+                    startActivity(intent);
+                }
+                if(user.getAccessLabel().compareToIgnoreCase("institution") == 0)
+                {
+                    Intent intent = new Intent(getApplicationContext(),SchoolList.class);
+                    //intent.putExtra("uri",uri);
+                    intent.putExtra("dis",user.getDistrict());
+                    intent.putExtra("sub",user.getSubDistrict());
+                    intent.putExtra("school",user.getInstitution());
+                    startActivity(intent);
+                }
+
             }
         });
         addSchoolButton.setOnClickListener(new View.OnClickListener() {

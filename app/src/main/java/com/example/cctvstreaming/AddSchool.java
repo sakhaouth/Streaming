@@ -34,6 +34,7 @@ public class AddSchool extends AppCompatActivity {
                 cameraNames.add(cameraName);
                 School school = new School(schoolName,disName,subName,cameraNames);
                 DatabaseController.storeSchool(school);
+                cameraNames.clear();
 
             }
         });

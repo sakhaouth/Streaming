@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignupActivity extends AppCompatActivity{
+public class SignupActivity extends AppCompatActivity implements SignUpInterface{
     private TextInputLayout emailTextView,passwordTextView, confirmPassTextView;
     private TextView message;
     private Button signup,signin;
@@ -80,16 +80,20 @@ public class SignupActivity extends AppCompatActivity{
     }
 
     private void createuser(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    Toast.makeText(SignupActivity.this,"User Registered Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(),LogIn.class));
-                }else {
-                    Toast.makeText(SignupActivity.this,"User Registration Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        DatabaseController.signUp(email,password,this);
+    }
+
+    @Override
+    public void onCompleteSignUp(String message) {
+        if(message.compareTo("ok") == 0)
+        {
+            Toast.makeText(SignupActivity.this,"User Registered Successfully", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(),LogIn.class));
+        }
+        else
+        {
+            Toast.makeText(SignupActivity.this,"User Registration Failed" + message, Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

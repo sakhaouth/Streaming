@@ -1,5 +1,10 @@
 package com.example.cctvstreaming;
 
+import android.util.Log;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+
 public class SubDistrict {
     private String name;
     private String UNO;
@@ -29,5 +34,8 @@ public class SubDistrict {
     public void setUNO(String UNO) {
         this.UNO = UNO;
     }
+
+
+
 
 }

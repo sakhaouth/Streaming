@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CCTVStreaming">
         <activity
+            android:name=".SubmitAccessForm"
+            android:exported="false" />
+        <activity
+            android:name=".LayerAuthentication"
+            android:exported="false" />
+        <activity
             android:name=".AddSchool"
             android:exported="false" />
         <activity
@@ -26,8 +32,7 @@
         <activity
             android:name=".SubDistrictList"
             android:exported="false"
-            android:label="Sub Districts"
-            android:parentActivityName=".HomePage" />
+            android:label="Sub Districts" />
         <activity
             android:name=".SchoolList"
             android:exported="false"

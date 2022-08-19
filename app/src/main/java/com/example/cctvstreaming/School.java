@@ -11,7 +11,7 @@ public class School implements Serializable {
     private String link;
     private String district,subDistrict;
     private ArrayList<String> cameraNames;
-    private String ip = "65.2.11.221";
+    private String ip = "3.6.60.4";
     private String principal;
     public School(String name,String district, String subDistrict,ArrayList<String> cameraNames)
     {
@@ -19,7 +19,7 @@ public class School implements Serializable {
         this.district = district;
         this.subDistrict = subDistrict;
         this.cameraNames = cameraNames;
-        link = "rtmp://"+ip+":1935/live/";
+        link = "rtmp://"+this.ip+":1935/live/";
         link += this.district.replaceAll(" ","-").toLowerCase() + "-" + this.subDistrict.replaceAll(" ","-").toLowerCase() + "-";
         link += this.name.replaceAll(" ","-").toLowerCase();
         Log.d("message",link);

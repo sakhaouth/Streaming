@@ -26,10 +26,13 @@
         <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
         <entry key="app/src/main/res/layout/activity_add_school.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_layer_authentication.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2586050724637681" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_media_player.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_school_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sub_district_list.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layout/activity_submit_access_form.xml" value="0.2658514492753623" />
         <entry key="app/src/main/res/layout/camera_list.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/layout/custom_controller.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/custom_player_control_view.xml" value="0.24739583333333334" />

@@ -35,7 +35,16 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
         progressBar = (ProgressBar) findViewById(R.id.schoolListProgressBar);
         String dis = (String) getIntent().getStringExtra("dis");
         String sub = (String) getIntent().getStringExtra("sub");
-        fetchSchools(dis,sub);
+        String school = (String) getIntent().getStringExtra("school");
+        if(school == null)
+        {
+            fetchSchools(dis,sub);
+        }
+        else
+        {
+            DatabaseController.getIndSchool(dis,sub,school,this);
+        }
+
         recyclerView = (RecyclerView) findViewById(R.id.school_list_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(schoolListAdaptor);
@@ -75,7 +84,7 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Log.d("okay",String.valueOf(R.id.home));
-        if(R.id.home == 2131362076)
+        if(R.id.home == 2131362103)
         {
             this.finish();
             return true;

@@ -10,6 +10,15 @@ public class Notification implements Serializable {
     private String recId;
     private String reqTime;
     private String notificationId;
+    public Notification(String description,String senderId,String senderName,String reqTime,String subject)
+    {
+
+        this.description = description;
+        this.senderId = senderId;
+        this.senderName = senderName;
+        this.reqTime = reqTime;
+        this.subject = subject;
+    }
     public Notification(String description,String senderId,String senderName,String reqTime,String subject,String recId)
     {
 

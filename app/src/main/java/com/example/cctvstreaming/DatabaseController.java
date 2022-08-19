@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,20 +35,123 @@ public class DatabaseController {
     private static FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    public static void signUp(String email,String password)
+    public static void checkAccess(SignInterface signInterface)
     {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if(firebaseUser == null)
+        {
+            signInterface.onComplete(null,"Sign In first");
+        }
+        else
+        {
+            getUser(firebaseUser.getUid(),signInterface);
+        }
+    }
+    public static void signIn(String email,String password,SignInterface signInterface)
+    {
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        FirebaseUser firebaseUser = authResult.getUser();
+                        if(firebaseUser.isEmailVerified())
+                        {
+                            getUser(firebaseUser.getUid(),signInterface);
+                        }
+                        else
+                        {
+                            signInterface.onComplete(null,"Please Verify Your Email");
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        signInterface.onComplete(null,e.getMessage());
+                    }
+                });
+    }
+
+    public static void getUser(String uid,SignInterface signInterface)
+    {
+        firebaseFirestore.collection("Users")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                        String name;
+                        String district;
+                        String subDistrict;
+                        String recognition;
+                        String number;
+                        String status;
+                        String id;
+                        String email;
+                        id = uid;
+                        String about;
+                        String accessLabel;
+
+                        name = (String) documentSnapshot.get("name");
+                        if (name == null)
+                        {
+                            Log.d("newM","No");
+                        }
+                        district = (String) documentSnapshot.get("district");
+                        subDistrict = (String) documentSnapshot.get("subDistrict");
+                        recognition = (String) documentSnapshot.get("recognition");
+                        number = (String) documentSnapshot.get("number");
+                        status = (String) documentSnapshot.get("status");
+                        email = (String) documentSnapshot.get("email");
+                        about = (String) documentSnapshot.get("about");
+                        accessLabel = (String) documentSnapshot.get("accessLabel");
+                        String institution = (String) documentSnapshot.get("institution");
+                        User user = new User(name,district,subDistrict,recognition,number,id,email,status,about,accessLabel,institution);
+                        signInterface.onComplete(user,"okay");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        signInterface.onComplete(null,e.getMessage());
+                    }
+                });
+    }
+
+    public static void signUp(String email,String password,SignUpInterface signUpInterface)
+    {
+
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
 
+                        FirebaseUser firebaseUser = authResult.getUser();
+                        sendVerification(firebaseUser,signUpInterface);
 
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        signUpInterface.onCompleteSignUp(e.getMessage());
+                    }
+                });
+    }
+    private static void sendVerification(FirebaseUser firebaseUser,SignUpInterface signUpInterface)
+    {
+        firebaseUser.sendEmailVerification()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        signUpInterface.onCompleteSignUp("ok");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        signUpInterface.onCompleteSignUp(e.getMessage());
                     }
                 });
     }
@@ -118,40 +222,58 @@ public class DatabaseController {
 
     }
 
-    public static void saveNotification(Notification notification)
+    public static void saveNotification(Notification notification,ListInterface listInterface)
     {
         firebaseFirestore.collection("Notifications")
                 .document(notification.getRecId())
-                .collection(notification.getRecId())
+                .collection(notification.getSenderId())
                 .add(notification)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-
+//                        sendNotification(notification.getRecId());
+                        listInterface.setSubmit("ok");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        listInterface.setSubmit(" no ok");
                     }
                 });
     }
-    public static void saveUser(User user)
+    public static void saveUser(User user,Notification notification,ListInterface listInterface)
     {
+        Log.d("today","there");
+        user.setStatus("requested");
         firebaseFirestore.collection("Users")
                 .document(user.getId())
                 .set(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Log.d("message","saved");
+                        Log.d("today","kothay");
+                        if(user.getAccessLabel() == null)
+                        {
+                            Log.d("today","here");
+                            listInterface.setSubmit("ok");
+                        }
+                        else if(user.getAccessLabel().compareToIgnoreCase("upozilla") == 0)
+                        {
+                            getDc(user.getDistrict(),notification,listInterface);
+                        }
+                        else if(user.getAccessLabel().compareToIgnoreCase("institution") == 0)
+                        {
+                            getUno(user.getDistrict(), user.getSubDistrict(),notification,listInterface);
+                        }
+                        listInterface.setSubmit("Set value");
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d("message","not saved");
+                        listInterface.setSubmit("no ok");
                     }
                 });
     }
@@ -171,7 +293,7 @@ public class DatabaseController {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-
+                        Log.d("ip",school.getIp());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -181,28 +303,44 @@ public class DatabaseController {
                     }
                 });
     }
-    public static void getDc(String district, Context context)
+    public static void setDc(String district,String id)
     {
-//        firebaseFirestore.collection("Districts")
-//                .document(district)
-//                .get()
-//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                        Log.d("noman","kaksnka");
-//                        Log.d("noman",(String) documentSnapshot.get("dc"));
-//                        Toast.makeText(context,(String) documentSnapshot.get("dc"),Toast.LENGTH_SHORT);
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(context,"Fail",Toast.LENGTH_SHORT);
-//                    }
-//                });
-//        Toast.makeText(context,"Fail",Toast.LENGTH_SHORT);
+        firebaseFirestore.collection("Districts")
+                .document(district)
+                .update("dc",id);
     }
-    public static void getUno(String district,String subDistrict)
+    public static void setUno(String district,String subDis,String id)
+    {
+        firebaseFirestore.collection("Districts")
+                .document(district)
+                .collection(subDis)
+                .document(subDis)
+                .update("dc",id);
+    }
+    public static void getDc(String district,Notification notification,ListInterface listInterface)
+    {
+        firebaseFirestore.collection("Districts")
+                .document(district)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Log.d("noman","kaksnka");
+                        Log.d("noman",(String) documentSnapshot.get("dc"));
+                        notification.setRecId((String) documentSnapshot.get("dc"));
+                        saveNotification(notification,listInterface);
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        listInterface.setSubmit("no ok");
+                    }
+                });
+
+    }
+    public static void getUno(String district,String subDistrict,Notification notification,ListInterface listInterface)
     {
         firebaseFirestore.collection("Districts")
                 .document(district)
@@ -212,19 +350,20 @@ public class DatabaseController {
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-
+                        notification.setRecId((String) documentSnapshot.get("uno"));
+                        saveNotification(notification,listInterface);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        listInterface.setSubmit("no");
                     }
                 });
 
     }
     // districts
-    public static void getDistrictList()
+    public static void getDistrictList(ListInterface listInterface)
     {
         firebaseFirestore.collection("Districts")
                 .get()
@@ -236,17 +375,18 @@ public class DatabaseController {
                         {
                             districts.add(documentSnapshot.getId());
                         }
+                        listInterface.setDistrict(districts);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        listInterface.setDistrict(null);
                     }
                 });
     }
     //sub districts
-    public static void getSubDisList(String district)
+    public static void getSubDisList(String district,ListInterface listInterface)
     {
         firebaseFirestore.collection("Districts")
                 .document(district)
@@ -260,16 +400,18 @@ public class DatabaseController {
                         {
                             districts.add(documentSnapshot.getId());
                         }
+                        listInterface.setSubDis(districts);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        listInterface.setSubDis(null);
                     }
                 });
     }
-    public static void getSchoolDisList(String district,String subDis)
+
+    public static void getSchoolDisList(String district,String subDis,ListInterface listInterface)
     {
         firebaseFirestore.collection("Districts")
                 .document(district)
@@ -285,12 +427,13 @@ public class DatabaseController {
                         {
                             districts.add(documentSnapshot.getId());
                         }
+                        listInterface.setSchool(districts);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        listInterface.setSchool(null);
                     }
                 });
     }
@@ -365,7 +508,46 @@ public class DatabaseController {
                     }
                 });
     }
+    public static void getIndSchool(String dis,String sub,String sName,SchoolListInterface schoolListInterface)
+    {
+        ArrayList<School> schools = new ArrayList<>();
+        firebaseFirestore.collection("Districts")
+                .document(dis)
+                .collection(dis)
+                .document(sub)
+                .collection(sub)
+                .document(sName)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        String name = (String) documentSnapshot.get("name");
+                        String district = (String) documentSnapshot.get("district");
+                        String subDistrict = (String) documentSnapshot.get("subDistrict");
+                        String link = (String) documentSnapshot.get("link");
+                        ArrayList<String> cameraNames = (ArrayList<String>) documentSnapshot.get("cameraNames");
+                        School school = new School(name,district,subDistrict,cameraNames,link);
+                        schools.add(school);
 
+                        System.out.println(school);
+                        Log.d("name",String.valueOf(school.getCameraNames().size()));
+                        System.out.println(String.valueOf(school.getCameraNames().size()));
+                        for(String x : school.getCameraNames())
+                        {
+                            Log.d("name",x);
+                        }
+                        schoolListInterface.setSchool(schools);
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+
+    }
     public static void getSchool(String district,String subDistrict,SchoolListInterface schoolListInterface)
     {
         ArrayList<School> schools = new ArrayList<>();

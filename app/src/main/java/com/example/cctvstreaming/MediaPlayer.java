@@ -148,6 +148,23 @@ public class MediaPlayer extends AppCompatActivity {
         super.onDestroy();
         player.pause();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        player.play();
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        player.pause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        player.pause();
+    }
 
 }

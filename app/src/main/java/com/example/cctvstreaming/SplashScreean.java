@@ -16,6 +16,7 @@ public class SplashScreean extends AppCompatActivity implements SignInterface {
     SignInterface signInterface = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DatabaseController.test();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screean);
 //        DatabaseController.setDc("Comilla","xBjDfLKET0N9RNdkyytLo5yqMuw2");

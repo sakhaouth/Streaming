@@ -9,12 +9,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="410dp"
-        android:layout_height="172dp"
+        android:layout_width="match_parent"
+        android:layout_height="305dp"
         android:layout_margin="10dp"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image"
+        app:srcCompat="@drawable/home_image"
         tools:layout_editor_absoluteX="0dp" />
 
     <androidx.appcompat.widget.AppCompatButton

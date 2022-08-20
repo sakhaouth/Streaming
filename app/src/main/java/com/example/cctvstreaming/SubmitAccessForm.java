@@ -146,7 +146,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
                 LocalDateTime localDateTime = LocalDateTime.now();
                 DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 String formattedDate = localDateTime.format(myFormatObj);
-                Notification notification = new Notification(messageText,idText,nameText,formattedDate,aboutText);
+                Notification notification = new Notification(String.format("New access request from %s %s",user.getRecognition(),user.getName()),idText,nameText,formattedDate,accessLabelText);
                 DatabaseController.saveUser(user,notification,listInterface);
             }
         });
@@ -260,10 +260,12 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
 
     @Override
     public void setSubmit(String message) {
-//        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(getApplicationContext(), LogIn.class);
-//        startActivity(intent);
-        finish();
+        Intent intent = new Intent(getApplicationContext(), LayerAuthentication.class);
+        intent.putExtra("id",idText);
+        intent.putExtra("state","requested");
+        intent.putExtra("about",accessLabelText);
+        startActivity(intent);
+//        finish();
 
     }
 }

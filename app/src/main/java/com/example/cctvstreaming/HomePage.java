@@ -51,13 +51,10 @@ public class HomePage extends AppCompatActivity {
         bell = findViewById(R.id.notification_bell);
         mAuth = FirebaseAuth.getInstance();
         user = (User) getIntent().getSerializableExtra("user");
-        Log.d("noman",user.getName());
         Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
         init();
 //        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
-
-
 
 
 
@@ -67,6 +64,7 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(HomePage.this, "Notification Called", Toast.LENGTH_SHORT).show();
             }
         });
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +128,7 @@ public class HomePage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Long notificationNo = snapshot.getValue(Long.class);
                 bellCount.setText(String.valueOf(notificationNo));
+
 
             }
 

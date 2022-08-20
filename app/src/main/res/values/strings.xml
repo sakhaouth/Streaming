@@ -32,6 +32,7 @@
     <string name="grant_access">Grant Access</string>
     <string name="request_list">List Of All Users Requesting for Access</string>
     <string name="number">Phone Number</string>
+    <string name="Sign_out">Sign Out</string>
     <string-array name="access">
         <item>DC</item>
         <item>UNO</item>

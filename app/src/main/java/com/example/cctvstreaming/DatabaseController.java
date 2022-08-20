@@ -35,6 +35,31 @@ public class DatabaseController {
     private static FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private static FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    public static void test()
+    {
+        firebaseFirestore.collection("test")
+                .whereEqualTo("a","ok")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots)
+                        {
+                            Log.d("newTest",documentSnapshot.getId());
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("newTest","No");
+                    }
+                });
+    }
+    public static void signOut()
+    {
+        firebaseAuth.signOut();
+    }
     public static void checkAccess(SignInterface signInterface)
     {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -129,6 +154,8 @@ public class DatabaseController {
 
                         FirebaseUser firebaseUser = authResult.getUser();
                         sendVerification(firebaseUser,signUpInterface);
+                        DatabaseReference myRef = database.getReference(firebaseUser.getUid());
+                        myRef.setValue(0);
 
                     }
                 })
@@ -159,7 +186,7 @@ public class DatabaseController {
     {
         DatabaseReference myRef = database.getReference(id);
         value = value + 1;
-        myRef.setValue(String.valueOf(value))
+        myRef.setValue(value)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -197,11 +224,48 @@ public class DatabaseController {
                 });
 
     }
-    private static void getNotifications(String id)
+    private static void getSendNotifications(String id)
     {
         firebaseFirestore.collection("Notifications")
-                .document(id)
-                .collection(id)
+                .whereEqualTo("senderId",id)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<Notification> notifications = new ArrayList<>();
+                        for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments())
+                        {
+                            String description;
+                            String senderName;
+                            String subject;
+                            String senderId;
+                            String recId;
+                            String reqTime;
+                            String notificationId;
+                            description = (String) documentSnapshot.get("description");
+                            senderName = (String) documentSnapshot.get("senderName");
+                            subject = (String) documentSnapshot.get("subject");
+                            senderId= (String) documentSnapshot.get("senderId");
+                            recId = (String) documentSnapshot.get("recId");
+                            reqTime = (String) documentSnapshot.get("reqTime");
+                            notificationId = (String) documentSnapshot.get("notificationId");
+                            Notification notification = new Notification(description,senderId,senderName,reqTime,subject,recId);
+                            notifications.add(notification);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+
+    }
+    private static void getReceiveNotifications(String id)
+    {
+        firebaseFirestore.collection("Notifications")
+                .whereEqualTo("recId",id)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -224,14 +288,14 @@ public class DatabaseController {
 
     public static void saveNotification(Notification notification,ListInterface listInterface)
     {
+
         firebaseFirestore.collection("Notifications")
-                .document(notification.getRecId())
-                .collection(notification.getSenderId())
                 .add(notification)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-//                        sendNotification(notification.getRecId());
+                        sendNotification(notification.getRecId());
+
                         listInterface.setSubmit("ok");
                     }
                 })
@@ -258,6 +322,10 @@ public class DatabaseController {
                             Log.d("today","here");
                             listInterface.setSubmit("ok");
                         }
+                        else if(user.getAccessLabel().compareToIgnoreCase("district") == 0)
+                        {
+                            listInterface.setSubmit("Set value");
+                        }
                         else if(user.getAccessLabel().compareToIgnoreCase("upozilla") == 0)
                         {
                             getDc(user.getDistrict(),notification,listInterface);
@@ -266,7 +334,7 @@ public class DatabaseController {
                         {
                             getUno(user.getDistrict(), user.getSubDistrict(),notification,listInterface);
                         }
-                        listInterface.setSubmit("Set value");
+
 
                     }
                 })
@@ -326,6 +394,11 @@ public class DatabaseController {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Log.d("noman","kaksnka");
+                        if(documentSnapshot.get("dc") == null)
+                        {
+                            listInterface.setSubmit("There is no one to accept your Request");
+                            return;
+                        }
                         Log.d("noman",(String) documentSnapshot.get("dc"));
                         notification.setRecId((String) documentSnapshot.get("dc"));
                         saveNotification(notification,listInterface);
@@ -350,6 +423,11 @@ public class DatabaseController {
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.get("uno") == null)
+                        {
+                            listInterface.setSubmit("There is no one to accept your Request");
+                            return;
+                        }
                         notification.setRecId((String) documentSnapshot.get("uno"));
                         saveNotification(notification,listInterface);
                     }

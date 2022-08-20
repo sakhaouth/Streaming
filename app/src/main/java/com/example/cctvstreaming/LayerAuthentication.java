@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class LayerAuthentication extends AppCompatActivity {
     private TextView welcome,webPortal,userManual, verify;
-    private Button requestAccess;
+    private Button requestAccess,signOut;
     private String id;
     private String stat;
     private TextView message;
@@ -20,7 +20,7 @@ public class LayerAuthentication extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layer_authentication);
-
+        signOut = (Button) findViewById(R.id.request_signOut);
         welcome = findViewById(R.id.welcome_note);
         webPortal = findViewById(R.id.web_portal);
         userManual = findViewById(R.id.user_manual);
@@ -40,6 +40,13 @@ public class LayerAuthentication extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SubmitAccessForm.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
+            }
+        });
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseController.signOut();
+                startActivity(new Intent(getApplicationContext(),LogIn.class));
             }
         });
 

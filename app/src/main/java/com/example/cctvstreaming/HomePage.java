@@ -32,7 +32,7 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
+
         setContentView(R.layout.activity_home_page);
         streamButton = (Button) findViewById(R.id.stream_button);
         addSchoolButton = (Button) findViewById(R.id.addSchoolButton);
@@ -40,9 +40,11 @@ public class HomePage extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
         user = (User) getIntent().getSerializableExtra("user");
+        Log.d("noman",user.getId());
         Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
 //        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
+        init();
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,11 +99,11 @@ public class HomePage extends AppCompatActivity {
     {
         Log.d("noman","initiated");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("aa");
+        DatabaseReference databaseReference = database.getReference(user.getId());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("noman",snapshot.getValue(String.class));
+                Log.d("noman",String.valueOf(snapshot.getValue(Long.class)));
             }
 
             @Override

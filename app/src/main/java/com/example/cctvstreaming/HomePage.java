@@ -2,15 +2,21 @@ package com.example.cctvstreaming;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,23 +32,41 @@ import java.util.TimerTask;
 public class HomePage extends AppCompatActivity {
     private Button streamButton,logout;
     private ImageView imageView;
+    private Toolbar toolbar;
     private FirebaseAuth mAuth;
+    private TextView bellCount;
+    private ViewGroup bell;
     Button addSchoolButton;
     User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
         setContentView(R.layout.activity_home_page);
         streamButton = (Button) findViewById(R.id.stream_button);
         addSchoolButton = (Button) findViewById(R.id.addSchoolButton);
         imageView = (ImageView) findViewById(R.id.imageView);
         logout = findViewById(R.id.logout);
+        toolbar = findViewById(R.id.homeToolbar);
+        bellCount = findViewById(R.id.notification_count);
+        bell = findViewById(R.id.notification_bell);
         mAuth = FirebaseAuth.getInstance();
         user = (User) getIntent().getSerializableExtra("user");
+        Log.d("noman",user.getName());
         Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
+        init();
 //        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
+
+
+
+
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomePage.this, "Notification Called", Toast.LENGTH_SHORT).show();
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,15 +117,20 @@ public class HomePage extends AppCompatActivity {
         });
         
     }
+
+
+
     private void init()
     {
         Log.d("noman","initiated");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("aa");
+        DatabaseReference databaseReference = database.getReference(user.getId());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("noman",snapshot.getValue(String.class));
+                Long notificationNo = snapshot.getValue(Long.class);
+                bellCount.setText(String.valueOf(notificationNo));
+
             }
 
             @Override

@@ -25,6 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".HomePage"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".LogIn"

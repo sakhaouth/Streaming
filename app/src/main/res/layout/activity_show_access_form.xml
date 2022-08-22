@@ -14,10 +14,10 @@
 
         >
         <TextView
-            android:id="@+id/form_init_text"
+            android:id="@+id/profile_init_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fill_up"/>
+            android:text="@string/verify_user"/>
         <androidx.cardview.widget.CardView
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -36,47 +36,28 @@
             </ImageView>
         </androidx.cardview.widget.CardView>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_first_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
-            android:hint="@string/first_name"
+            android:hint="@string/name"
             android:inputType="text"
             app:boxStrokeColor="@color/teal_700"
 
             app:hintTextColor="@color/red"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_name_show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                />
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_last_name"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/last_name"
-            android:inputType="text"
-            app:boxStrokeColor="@color/teal_700"
 
-            app:hintTextColor="@color/red"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,12 +72,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_number"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,13 +91,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_designation"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -131,19 +112,24 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_designation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_about"
+
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
-            android:hint="@string/about"
+            android:hint="@string/district"
             android:inputType="textLongMessage"
             app:boxStrokeColor="@color/teal_700"
 
@@ -152,36 +138,33 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_district"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/sub_district"
+            android:inputType="textLongMessage"
+            app:boxStrokeColor="@color/teal_700"
+
+            app:hintTextColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profile_subdistrict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/form_access_level"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
-
-        <Spinner
-            android:id="@+id/districts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
-        <Spinner
-            android:id="@+id/upozilla"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
-        <Spinner
-            android:id="@+id/instituttion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
 
 
         <androidx.cardview.widget.CardView
@@ -209,38 +192,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/upload_institute_image"
+                    android:text="Institution Image"
                     />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/form_message"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/your_msg"
-            android:inputType="textLongMessage"
-            app:boxStrokeColor="@color/teal_700"
+            android:id="@+id/profile_progress"
+            android:visibility="gone"/>
 
-            app:hintTextColor="@color/red"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox android:id="@+id/check_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/check_info"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -248,17 +213,27 @@
             android:gravity="center"
             android:id="@+id/formError"
             />
-        <ProgressBar
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/submit_progress"
-            android:visibility="gone"/>
-        <Button
-            android:id="@+id/access_form_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/submit"
-            />
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/profile_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Accept"
+                />
+            <Button
+                android:id="@+id/profile_reject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Reject"
+                />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

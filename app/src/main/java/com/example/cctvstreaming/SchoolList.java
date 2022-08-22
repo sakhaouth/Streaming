@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,6 +33,8 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
 
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         setContentView(R.layout.activity_school_list);
         progressBar = (ProgressBar) findViewById(R.id.schoolListProgressBar);
         String dis = (String) getIntent().getStringExtra("dis");
@@ -82,14 +86,19 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
 
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Log.d("okay",String.valueOf(R.id.home));
-        if(R.id.home == 2131362103)
+        switch (item.getItemId())
         {
-            this.finish();
-            return true;
+            case android.R.id.home:
+                this.finish();
         }
         return super.onOptionsItemSelected(item);
+
+
 
     }
 }

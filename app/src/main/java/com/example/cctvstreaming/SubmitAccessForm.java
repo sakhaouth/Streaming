@@ -1,17 +1,24 @@
 package com.example.cctvstreaming;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,13 +51,18 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
     private String aboutText;
     private String accessLabelText;
     private String schoolName;
+    private ProgressBar progressBar;
     ListInterface listInterface = this;
     private TextView formError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_access_form);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         idText = getIntent().getStringExtra("id");
         formInit = findViewById(R.id.form_init_text);
         firstName = findViewById(R.id.form_first_name);
@@ -66,7 +78,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
         institute = findViewById(R.id.instituttion);
         formError = (TextView) findViewById(R.id.formError);
         checkInfo = findViewById(R.id.check_info);
-
+        progressBar = findViewById(R.id.submit_progress);
         submit = findViewById(R.id.access_form_submit);
 
         List<String> footballPlayers = new ArrayList<>();
@@ -100,6 +112,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+
                 String fName = firstName.getEditText().getText().toString();
                 String lName = lastName.getEditText().getText().toString();
                 nameText = fName + " "+ lName;
@@ -138,15 +151,49 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
                     formError.setText("*Set District");
                     return;
                 }
-
-
+                if(accessLabelText.compareToIgnoreCase("upozilla") == 0)
+                {
+                    if(TextUtils.isEmpty(accessLabelText))
+                    {
+                        formError.setText("*Set Upozilla");
+                        return;
+                    }
+                }
+                if(accessLabelText.compareToIgnoreCase("institution") == 0)
+                {
+                    if(TextUtils.isEmpty(schoolName))
+                    {
+                        formError.setText("*Set Institution");
+                        return;
+                    }
+                }
+                if(!checkInfo.isChecked())
+                {
+                    formError.setText("*Everything is correct?");
+                    return;
+                }
+                submit.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
                 User user = new User(nameText,districtText,subDistrictText,recognitionText,numberText,idText,emailText,statusText,aboutText,accessLabelText,schoolName);
 
                 String messageText = msg.getEditText().getText().toString();
                 LocalDateTime localDateTime = LocalDateTime.now();
                 DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 String formattedDate = localDateTime.format(myFormatObj);
-                Notification notification = new Notification(String.format("New access request from %s %s",user.getRecognition(),user.getName()),idText,nameText,formattedDate,accessLabelText);
+                String temp = new String();
+                if(accessLabelText.compareTo("district") == 0)
+                {
+                    temp = districtText;
+                }
+                else if(accessLabelText.compareTo("upozilla") == 0)
+                {
+                    temp = subDistrictText;
+                }
+                else if(accessLabelText.compareTo("institution") == 0)
+                {
+                    temp = schoolName;
+                }
+                Notification notification = new Notification(String.format("New access request from %s %s for %s %s access",user.getRecognition(),user.getName(),temp,user.getAccessLabel()),user.getId(),user.getName(),formattedDate,user.getRecognition());
                 DatabaseController.saveUser(user,notification,listInterface);
             }
         });
@@ -260,12 +307,30 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
 
     @Override
     public void setSubmit(String message) {
+        progressBar.setVisibility(View.GONE);
+        submit.setVisibility(View.VISIBLE);
         Intent intent = new Intent(getApplicationContext(), LayerAuthentication.class);
         intent.putExtra("id",idText);
         intent.putExtra("state","requested");
         intent.putExtra("about",accessLabelText);
         startActivity(intent);
 //        finish();
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                this.finish();
+        }
+        return super.onOptionsItemSelected(item);
+
+
 
     }
 }

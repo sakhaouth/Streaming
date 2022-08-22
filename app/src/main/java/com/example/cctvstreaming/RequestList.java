@@ -13,50 +13,50 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class SubDistrictList extends AppCompatActivity implements SubDistrictInterface {
-    private String district;
+public class RequestList extends AppCompatActivity implements GetNotificationInterface,AcceptInterface{
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
-    private SubDistrictListAdaptor subDistrictListAdaptor;
-    User user;
+    private  RequestListAdaptor requestListAdaptor;
+    private String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_request_list);
         ActionBar actionBar = getSupportActionBar();
 
-        assert actionBar != null;
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
         actionBar.setBackgroundDrawable(colorDrawable);
-        setContentView(R.layout.activity_sub_district_list);
-//        ActionBar actionBar = getSupportActionBar();
-        district = (String) getIntent().getStringExtra("dis");
-        recyclerView = (RecyclerView) findViewById(R.id.sub_district_recycler_view);
-        progressBar = (ProgressBar) findViewById(R.id.sub_district_progressBar);
-        Log.d("district",district);
-        fetchData(district);
-        subDistrictListAdaptor = new SubDistrictListAdaptor(district);
+        recyclerView = (RecyclerView) findViewById(R.id.requestListRecyclerView);
+        id = getIntent().getStringExtra("id");
+        progressBar = (ProgressBar) findViewById(R.id.reqListProgressBar);
+        requestListAdaptor = new RequestListAdaptor(this);
+//        requestListAdaptor.setVal(dis,sub,this,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(subDistrictListAdaptor);
+        recyclerView.setAdapter(requestListAdaptor);
+        callDatabase();
 
     }
-
-    @Override
-    public void getSubDistrict(ArrayList<SubDistrict> subDistricts) {
-        subDistrictListAdaptor.setSubDistricts(subDistricts);
-        progressBar.setVisibility(View.INVISIBLE);
-    }
-    private void fetchData(String district)
+    private void callDatabase()
     {
         progressBar.setVisibility(View.VISIBLE);
-        DatabaseController.getSubDistricts(district,this);
+        DatabaseController.getReceiveNotifications(id,this);
 
     }
-
+    @Override
+    public void onComplete(ArrayList<Notification> notifications) {
+        progressBar.setVisibility(View.GONE);
+        if(notifications == null)
+        {
+            return;
+        }
+        requestListAdaptor.setList(notifications);
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -72,5 +72,10 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
 
 
 
+    }
+
+    @Override
+    public void onComplete(String message) {
+        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
     }
 }

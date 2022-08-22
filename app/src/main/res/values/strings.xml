@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CCTVStreaming</string>
+    <string name="app_name">LMES</string>
     <string name="type_email">Type your email</string>
     <string name="type_password">Type your password</string>
     <string name="watch_stream">Watch Stream</string>
@@ -33,6 +33,12 @@
     <string name="request_list">List Of All Users Requesting for Access</string>
     <string name="number">Phone Number</string>
     <string name="Sign_out">Sign Out</string>
+    <string name="name">Name</string>
+    <string name="verify_user">Verify the user from given information</string>
+    <string name="access_level">Access Level</string>
+    <string name="district">District</string>
+    <string name="sub_district">Upozilla</string>
+    <string name="message">Message</string>
     <string-array name="access">
         <item>DC</item>
         <item>UNO</item>

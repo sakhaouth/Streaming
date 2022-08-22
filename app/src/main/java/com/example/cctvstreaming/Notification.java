@@ -29,6 +29,17 @@ public class Notification implements Serializable {
         this.subject = subject;
         this.recId = recId;
     }
+    public Notification(String description,String senderId,String senderName,String reqTime,String subject,String recId,String id)
+    {
+
+        this.description = description;
+        this.senderId = senderId;
+        this.senderName = senderName;
+        this.reqTime = reqTime;
+        this.subject = subject;
+        this.recId = recId;
+        this.notificationId = id;
+    }
 
     public String getNotificationId() {
         return notificationId;

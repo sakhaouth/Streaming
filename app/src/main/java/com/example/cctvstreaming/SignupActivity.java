@@ -1,14 +1,18 @@
 package com.example.cctvstreaming;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +27,15 @@ public class SignupActivity extends AppCompatActivity implements SignUpInterface
     private TextView message;
     private Button signup,signin;
     private FirebaseAuth mAuth;
-
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         emailTextView = findViewById(R.id.client_sign_email);
         passwordTextView = findViewById(R.id.client_sign_password);
         confirmPassTextView = findViewById(R.id.client_sign_password_2);
@@ -37,7 +43,7 @@ public class SignupActivity extends AppCompatActivity implements SignUpInterface
         signin = findViewById(R.id.client_signin_button);
         signup = findViewById(R.id.client_sign_button);
         mAuth = FirebaseAuth.getInstance();
-
+        progressBar = findViewById(R.id.sign_progress);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +54,8 @@ public class SignupActivity extends AppCompatActivity implements SignUpInterface
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                signup.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
                 String email,password,password_2;
                 email = emailTextView.getEditText().getText().toString();
                 password = passwordTextView.getEditText().getText().toString();
@@ -85,6 +93,8 @@ public class SignupActivity extends AppCompatActivity implements SignUpInterface
 
     @Override
     public void onCompleteSignUp(String message) {
+        progressBar.setVisibility(View.GONE);
+        signup.setVisibility(View.VISIBLE);
         if(message.compareTo("ok") == 0)
         {
             Toast.makeText(SignupActivity.this,"User Registered Successfully", Toast.LENGTH_SHORT).show();

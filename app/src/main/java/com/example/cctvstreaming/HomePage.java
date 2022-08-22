@@ -37,6 +37,7 @@ public class HomePage extends AppCompatActivity {
     private TextView bellCount;
     private ViewGroup bell;
     Button addSchoolButton;
+    Button editAccessButton;
     User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class HomePage extends AppCompatActivity {
         addSchoolButton = (Button) findViewById(R.id.addSchoolButton);
         imageView = (ImageView) findViewById(R.id.imageView);
         logout = findViewById(R.id.logout);
+        editAccessButton = findViewById(R.id.editAccess);
         toolbar = findViewById(R.id.homeToolbar);
         bellCount = findViewById(R.id.notification_count);
         bell = findViewById(R.id.notification_bell);
@@ -57,17 +59,29 @@ public class HomePage extends AppCompatActivity {
 //        DatabaseController.updateVal("aa");
 
 
-
+        editAccessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SubmitAccessForm.class);
+                intent.putExtra("id",user.getId());
+                startActivity(intent);
+            }
+        });
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DatabaseController.updateVal(user.getId(),Long.valueOf(-1));
                 Toast.makeText(HomePage.this, "Notification Called", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomePage.this,RequestList.class);
+                intent.putExtra("id",user.getId());
+                startActivity(intent);
             }
         });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(getApplicationContext(),"Logging Out",Toast.LENGTH_LONG).show();
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(),LogIn.class));

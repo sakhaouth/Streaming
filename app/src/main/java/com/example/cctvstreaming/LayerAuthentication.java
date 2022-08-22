@@ -1,10 +1,16 @@
 package com.example.cctvstreaming;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +25,12 @@ public class LayerAuthentication extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         setContentView(R.layout.activity_layer_authentication);
         signOut = (Button) findViewById(R.id.request_signOut);
         welcome = findViewById(R.id.welcome_note);
@@ -49,6 +61,22 @@ public class LayerAuthentication extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),LogIn.class));
             }
         });
+
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                this.finish();
+        }
+        return super.onOptionsItemSelected(item);
+
 
 
     }

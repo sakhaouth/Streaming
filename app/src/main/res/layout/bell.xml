@@ -12,35 +12,53 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_notifications_active_24" />
+        app:srcCompat="@drawable/ic_notification" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/notification_number"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/notification_icon"
-        app:layout_constraintTop_toTopOf="@+id/notification_icon"
-        app:cardCornerRadius="50dp">
+    <TextView
+        android:id="@+id/notification_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    </TextView>
 
-            <TextView
-                android:id="@+id/notification_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="MissingConstraints">
 
-            </TextView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/notification_number"-->
+<!--        android:layout_width="20dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        app:cardBackgroundColor="@color/red"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/notification_icon"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/notification_icon"-->
+<!--        app:cardCornerRadius="50dp">-->
 
-    </androidx.cardview.widget.CardView>
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/notification_count"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                android:textColor="@color/red"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                tools:ignore="MissingConstraints">-->
+
+<!--            </TextView>-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </androidx.cardview.widget.CardView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

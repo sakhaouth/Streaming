@@ -1,8 +1,11 @@
 package com.example.cctvstreaming;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,13 +36,20 @@ import java.util.TimerTask;
 public class HomePage extends AppCompatActivity {
     private Button streamButton,logout;
     private ImageView imageView;
-    private Toolbar toolbar;
     private FirebaseAuth mAuth;
     private TextView bellCount;
     private ViewGroup bell;
-    Button addSchoolButton;
-    Button editAccessButton;
-    User user;
+    private ViewGroup menuBar;
+    private ViewGroup calender;
+    private Button addSchoolButton;
+    private Button editAccessButton;
+    private User user;
+
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawer;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,15 +59,46 @@ public class HomePage extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         logout = findViewById(R.id.logout);
         editAccessButton = findViewById(R.id.editAccess);
-        toolbar = findViewById(R.id.homeToolbar);
+
+        menuBar = findViewById(R.id.menu_bar_icon);
+//
+//
+//
+//        toolbar = findViewById(R.id.homeToolbar);
+//        setSupportActionBar(toolbar);
+//        navigationView = findViewById(R.id.nav_view);
+//        drawer = findViewById(R.id.drawer_layout);
+//        Log.d("Null Check", "onCreate: "+navigationView);
+//        toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
+
+
         bellCount = findViewById(R.id.notification_count);
         bell = findViewById(R.id.notification_bell);
         mAuth = FirebaseAuth.getInstance();
         user = (User) getIntent().getSerializableExtra("user");
+
+        calender = findViewById(R.id.calender_icon);
         Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
         init();
 //        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
+
+
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId())
+//                {
+//                    case R.id.nav_live_stream:
+//                        Toast.makeText(HomePage.this, "Live Streaming Called", Toast.LENGTH_SHORT).show();
+//                        drawer.closeDrawer(GravityCompat.START);
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
 
 
         editAccessButton.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +107,18 @@ public class HomePage extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SubmitAccessForm.class);
                 intent.putExtra("id",user.getId());
                 startActivity(intent);
+            }
+        });
+        menuBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomePage.this, "Menu Called", Toast.LENGTH_SHORT).show();
+            }
+        });
+        calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomePage.this, "Calender Called", Toast.LENGTH_SHORT).show();
             }
         });
         bell.setOnClickListener(new View.OnClickListener() {

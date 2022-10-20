@@ -10,4 +10,8 @@
     <color name="red">#B10E0E</color>
     <color name="primary_2">#674AAE</color>
     <color name="BG">#F2F2F2</color>
+    <color name="background">#F4F4F4</color>
+    <color name="dark">#343D44</color>
+    <color name="dark_0">#A4A4A5</color>
+    <color name="violet">#674AAE</color>
 </resources>

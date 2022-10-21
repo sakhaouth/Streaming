@@ -2,8 +2,8 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="app_name">LMES</string>
-    <string name="type_email">Type your email</string>
-    <string name="type_password">Type your password</string>
+    <string name="type_email">Mobile Number/Email Address</string>
+    <string name="type_password">Password</string>
     <string name="watch_stream">Watch Stream</string>
     <string name="sign_text">Please Sign up for monitoring</string>
     <string name="splash_text">LABORATORY MONITORING AND EVALUATION SYSTEM</string>

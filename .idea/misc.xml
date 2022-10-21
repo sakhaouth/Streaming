@@ -24,10 +24,10 @@
         <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
         <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1945" />
         <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
+
         <entry key="app/src/main/res/drawable/base_gradient.xml" value="0.334" />
         <entry key="app/src/main/res/drawable/edit_icon.xml" value="0.334" />
         <entry key="app/src/main/res/drawable/ic_arrow_square_left.xml" value="0.2625" />
-        <entry key="app/src/main/res/drawable/ic_button.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.153" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.2455" />
         <entry key="app/src/main/res/drawable/ic_form_init.xml" value="0.2625" />
@@ -44,6 +44,12 @@
         <entry key="app/src/main/res/drawable/logo.xml" value="0.334" />
         <entry key="app/src/main/res/drawable/request_access.xml" value="0.249" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1395" />
+        <entry key="..\:/projects/Streaming/app/src/main/res/drawable/ic_button.xml" value="0.23" />
+        <entry key="..\:/projects/Streaming/app/src/main/res/drawable/ic_sign_up_rectangle.xml" value="0.2985" />
+        <entry key="..\:/projects/Streaming/app/src/main/res/drawable/ic_text_filed.xml" value="0.2985" />
+        <entry key="..\:/projects/Streaming/app/src/main/res/drawable/login_shape.xml" value="0.255" />
+        <entry key="..\:/projects/Streaming/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/projects/Streaming/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_add_school.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_layer_authentication.xml" value="0.2" />

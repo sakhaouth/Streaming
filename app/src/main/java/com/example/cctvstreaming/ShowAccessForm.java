@@ -36,6 +36,7 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         actionBar.setDisplayHomeAsUpEnabled(true);
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
         actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_square_left);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_access_form);
         id = getIntent().getStringExtra("id");

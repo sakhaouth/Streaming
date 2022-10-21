@@ -35,9 +35,9 @@ public class LogIn extends AppCompatActivity implements SignInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ActionBar actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
-        actionBar.setBackgroundDrawable(colorDrawable);
+//        ActionBar actionBar = getSupportActionBar();
+//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+//        actionBar.setBackgroundDrawable(colorDrawable);
         emailTextView = (TextInputLayout) findViewById(R.id.client_login_email);
         progressBar = (ProgressBar) findViewById(R.id.login_progress);
         passwordTextView = (TextInputLayout) findViewById(R.id.client_login_password);

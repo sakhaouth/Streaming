@@ -124,6 +124,7 @@
 
             <Button
                 android:id="@+id/editAccess"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -133,6 +134,7 @@
 
             <Button
                 android:id="@+id/profileButton"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -143,6 +145,7 @@
             <Button
                 android:id="@+id/logout"
                 android:layout_width="wrap_content"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/primary_2"

@@ -128,6 +128,7 @@ public class LogIn extends AppCompatActivity implements SignInterface {
         {
             Toast.makeText(LogIn.this,"User Logged In Successfully", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(),HomePage.class);
+            Log.d("userName",user.getEmail());
             intent.putExtra("user", user);
             startActivity(intent);
         }

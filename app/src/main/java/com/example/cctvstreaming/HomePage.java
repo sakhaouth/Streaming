@@ -52,6 +52,8 @@ public class HomePage extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawer;
     private Toolbar toolbar;
+    private TextView userName;
+    private TextView userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,10 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(HomePage.this, "Menu Called", Toast.LENGTH_SHORT).show();
                 drawer.open();
+                userName = (TextView) findViewById(R.id.user_name);
+                userEmail = findViewById(R.id.user_email);
+                userName.setText(user.getName());
+                userEmail.setText(user.getEmail());
 
             }
         });

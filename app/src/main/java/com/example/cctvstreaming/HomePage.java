@@ -45,7 +45,7 @@ public class HomePage extends AppCompatActivity {
     private Button editAccessButton;
     private User user;
 
-    private NavigationView navigationView;
+    private NavigationView navigationView,navigationView_bot;
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawer;
     private Toolbar toolbar;
@@ -53,7 +53,7 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_main);
         streamButton = (Button) findViewById(R.id.stream_button);
         addSchoolButton = (Button) findViewById(R.id.addSchoolButton);
         imageView = (ImageView) findViewById(R.id.imageView);
@@ -64,14 +64,13 @@ public class HomePage extends AppCompatActivity {
 //
 //
 //
-//        toolbar = findViewById(R.id.homeToolbar);
+        toolbar = findViewById(R.id.homeToolbar);
 //        setSupportActionBar(toolbar);
-//        navigationView = findViewById(R.id.nav_view);
-//        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView_bot = findViewById(R.id.nav_view_bot);
+        drawer = findViewById(R.id.drawer_layout);
 //        Log.d("Null Check", "onCreate: "+navigationView);
-//        toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
+
 
 
         bellCount = findViewById(R.id.notification_count);
@@ -86,19 +85,51 @@ public class HomePage extends AppCompatActivity {
 //        DatabaseController.updateVal("aa");
 
 
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId())
-//                {
-//                    case R.id.nav_live_stream:
-//                        Toast.makeText(HomePage.this, "Live Streaming Called", Toast.LENGTH_SHORT).show();
-//                        drawer.closeDrawer(GravityCompat.START);
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
+        toggle = new ActionBarDrawerToggle(HomePage.this,drawer,toolbar,R.string.open,R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        menuBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomePage.this, "Menu Called", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.nav_live_stream:
+                        Toast.makeText(HomePage.this, "Live Streaming Called", Toast.LENGTH_SHORT).show();
+                        drawer.closeDrawer(GravityCompat.START);
+                        break;
+                }
+                return true;
+            }
+        });
+        navigationView_bot.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.logout_nav:
+                        Toast.makeText(HomePage.this, "Log Out Called", Toast.LENGTH_SHORT).show();
+                        drawer.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.request_nav:
+                        Toast.makeText(HomePage.this, "Request Access Called", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), SubmitAccessForm.class);
+                        intent.putExtra("id",user.getId());
+                        intent.putExtra("user",user);
+                        startActivity(intent);
+                        drawer.closeDrawer(GravityCompat.START);
+                        break;
+                }
+                return true;
+            }
+        });
 
 
         editAccessButton.setOnClickListener(new View.OnClickListener() {
@@ -109,12 +140,7 @@ public class HomePage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        menuBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(HomePage.this, "Menu Called", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

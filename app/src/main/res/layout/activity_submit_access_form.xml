@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,16 +13,81 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
 
-
         >
-        <TextView
+
+        <include layout="@layout/back_toolbar">
+
+        </include>
+
+<!--    <include layout="@layout/form_init">-->
+
+<!--    </include>-->
+
+        <ImageView
             android:id="@+id/form_init_text"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fill_up"/>
+            app:srcCompat="@drawable/ic_form_init_box" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="-65dp">
+            <TextView
+                android:id="@+id/please_fill"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:text="@string/please_fill"
+                android:textAppearance="@style/please_fill"
+                android:fontFeatureSettings="pnum, lnum"
+                android:lineSpacingExtra="0sp"
+                android:gravity="center_vertical"
+                />
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_task_square"/>
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="*"
+                android:textColor="@color/red">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/required"
+                android:fontFeatureSettings="pnum, lnum"
+                android:lineSpacingExtra="0sp"
+                android:gravity="center_vertical"
+                android:text="Required">
+
+            </TextView>
+        </LinearLayout>
         <androidx.cardview.widget.CardView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:elevation="12dp"
             android:id="@+id/card_profile"
             app:cardCornerRadius="40dp"
@@ -30,9 +97,10 @@
             android:thicknessRatio="1.9">
             <ImageView
                 android:layout_height="80dp"
-                android:layout_width="match_parent"
+                android:layout_width="80dp"
+                android:layout_gravity="center"
                 android:id="@+id/add_image"
-                android:src="@drawable/ic_baseline_add_24">
+                android:src="@drawable/ic_camera">
             </ImageView>
         </androidx.cardview.widget.CardView>
         <com.google.android.material.textfield.TextInputLayout
@@ -45,6 +113,7 @@
             android:hint="@string/first_name"
             android:inputType="text"
             app:boxStrokeColor="@color/teal_700"
+            android:padding="10dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +122,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -65,6 +135,7 @@
             android:hint="@string/last_name"
             android:inputType="text"
             app:boxStrokeColor="@color/teal_700"
+            android:padding="10dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +156,7 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:boxStrokeColor="@color/teal_700"
+            android:padding="10dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,6 +177,7 @@
             android:hint="@string/number"
             android:inputType="number"
             app:boxStrokeColor="@color/teal_700"
+            android:padding="10dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -125,6 +198,7 @@
             android:hint="@string/designation"
             android:inputType="text"
             app:boxStrokeColor="@color/teal_700"
+            android:padding="10dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,6 +220,7 @@
             android:hint="@string/about"
             android:inputType="textLongMessage"
             app:boxStrokeColor="@color/teal_700"
+            android:padding="10dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -157,57 +232,136 @@
                 android:inputType="textLongMessage" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/form_access_level"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center">
 
-        <Spinner
-            android:id="@+id/districts"
+            <ImageButton
+                android:id="@+id/help_access_level"
+                android:layout_marginLeft="8dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/ic_message_question">
+
+            </ImageButton>
+            <Spinner
+                android:id="@+id/form_access_level"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:spinnerMode="dropdown"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
-        <Spinner
-            android:id="@+id/upozilla"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/help_district"
+                android:layout_marginLeft="8dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/ic_message_question">
+
+            </ImageButton>
+            <Spinner
+                android:id="@+id/districts"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:spinnerMode="dropdown"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
-        <Spinner
-            android:id="@+id/instituttion"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/help_upozilla"
+                android:layout_marginLeft="8dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/ic_message_question">
+
+            </ImageButton>
+            <Spinner
+                android:id="@+id/upozilla"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:spinnerMode="dropdown"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            />
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/help_instituttion"
+                android:layout_marginLeft="8dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/ic_message_question">
+
+            </ImageButton>
+            <Spinner
+                android:id="@+id/instituttion"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:spinnerMode="dropdown"
+                />
+        </LinearLayout>
+
+
+
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
             android:elevation="12dp"
             android:id="@+id/card_institute"
             android:layout_gravity="center"
+            app:cardCornerRadius="10dp"
+            android:background="#E8E8E8"
             android:shape="ring"
             android:thicknessRatio="1.9">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center"
+                android:layout_gravity="center"
                 >
 
                 <ImageView
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_width="match_parent"
                     android:id="@+id/add_image_institute"
                     android:src="@drawable/ic_baseline_add_24">
                 </ImageView>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:gravity="center"
                     android:text="@string/upload_institute_image"
                     />
@@ -221,6 +375,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/your_msg"
@@ -240,6 +395,7 @@
         <CheckBox android:id="@+id/check_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@string/check_info"/>
         <TextView
             android:layout_width="match_parent"
@@ -253,12 +409,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/submit_progress"
             android:visibility="gone"/>
-        <Button
+
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/access_form_submit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submit"
-            />
+            android:background="@drawable/ic_button"
+            android:layout_gravity="center"
+            android:text="Submit"
+            android:textColor="@color/BG"
+            android:textSize="16sp">
+
+        </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 
 </ScrollView>

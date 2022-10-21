@@ -26,17 +26,29 @@
         <entry key="..\:/Users/Nazmul Hasan/AndroidStudioProjects/CCTVStreaming/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/base_gradient.xml" value="0.334" />
         <entry key="app/src/main/res/drawable/edit_icon.xml" value="0.334" />
+        <entry key="app/src/main/res/drawable/ic_arrow_square_left.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/ic_button.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.153" />
+        <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/ic_form_init.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/ic_form_init_box.xml" value="0.19" />
+        <entry key="app/src/main/res/drawable/ic_launcher_splash.xml" value="0.249" />
+        <entry key="app/src/main/res/drawable/ic_live_stream.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/ic_menu_bar.xml" value="0.153" />
+        <entry key="app/src/main/res/drawable/ic_message_question.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/ic_notice.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable/ic_notification.xml" value="0.153" />
+        <entry key="app/src/main/res/drawable/ic_profile_background.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/ic_thin_rect.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/live_png.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/logo.xml" value="0.334" />
+        <entry key="app/src/main/res/drawable/request_access.xml" value="0.249" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1395" />
         <entry key="app/src/main/res/layout/activity_add_school.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_layer_authentication.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2586050724637681" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_media_player.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_request_list.xml" value="0.2509057971014493" />
         <entry key="app/src/main/res/layout/activity_school_list.xml" value="0.22" />
@@ -44,20 +56,26 @@
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/activity_splash_screean.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_sub_district_list.xml" value="0.18177083333333333" />
-        <entry key="app/src/main/res/layout/activity_submit_access_form.xml" value="0.2658514492753623" />
+        <entry key="app/src/main/res/layout/activity_submit_access_form.xml" value="0.28074245939675174" />
+        <entry key="app/src/main/res/layout/back_arrow.xml" value="0.3020833333333333" />
+        <entry key="app/src/main/res/layout/back_toolbar.xml" value="0.3020833333333333" />
         <entry key="app/src/main/res/layout/bell.xml" value="0.75" />
-        <entry key="app/src/main/res/layout/calender.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/calender.xml" value="0.33" />
         <entry key="app/src/main/res/layout/camera_list.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/layout/custom_controller.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/custom_player_control_view.xml" value="0.24739583333333334" />
+        <entry key="app/src/main/res/layout/extra.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/form_init.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/help_popup.xml" value="0.2890625" />
         <entry key="app/src/main/res/layout/menu_bar.xml" value="0.22506082725060828" />
-        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/request_view.xml" value="0.2509057971014493" />
         <entry key="app/src/main/res/layout/school_view.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/sub_district_list_view.xml" value="0.29981884057971014" />
-        <entry key="app/src/main/res/layout/toolbar.xml" value="0.18" />
-        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.9" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.33" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />
         <entry key="app/src/main/res/menu/menu_tool.xml" value="0.33177083333333335" />
+        <entry key="app/src/main/res/menu/nav_last.xml" value="0.19375" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.34791666666666665" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19791666666666666" />
       </map>

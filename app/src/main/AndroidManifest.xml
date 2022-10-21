@@ -19,7 +19,8 @@
             android:exported="false" />
         <activity
             android:name=".SubmitAccessForm"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".LayerAuthentication"
             android:exported="false" />
@@ -28,14 +29,16 @@
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".HomePage"
             android:exported="false"
             android:theme="@style/Theme.CCTVStreaming.NoActionBar" />
         <activity
             android:name=".LogIn"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".SubDistrictList"
             android:exported="false"

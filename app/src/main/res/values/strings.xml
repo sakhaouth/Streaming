@@ -45,6 +45,9 @@
     <string name="live_stream">Live Stream</string>
     <string name="notice">Notice</string>
     <string name="weekly_update">Weekly Update</string>
+    <string name="log_out">Log Out</string>
+    <string name="please_fill">Please fill up the form below with correct information</string>
+
     <string-array name="access">
         <item>DC</item>
         <item>UNO</item>

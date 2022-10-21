@@ -21,26 +21,27 @@
             android:paddingRight="20dp">
 
             <include
-                android:id="@+id/menu_bar_icon"
-                layout="@layout/menu_bar"
+                android:id="@+id/back_icon"
+                layout="@layout/back_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <TextView
                 android:id="@+id/top_text"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/lmes"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white"
-                android:textSize="34sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/menu_bar_icon"
+                app:layout_constraintStart_toEndOf="@+id/back_icon"
                 app:layout_constraintTop_toTopOf="parent">
 
             </TextView>

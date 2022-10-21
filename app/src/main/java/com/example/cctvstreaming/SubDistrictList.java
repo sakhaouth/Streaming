@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,17 +23,19 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private SubDistrictListAdaptor subDistrictListAdaptor;
+    private ImageView backArrow;
+    private TextView topText, districtName;
     User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar actionBar = getSupportActionBar();
-
-        assert actionBar != null;
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
-        actionBar.setBackgroundDrawable(colorDrawable);
+//        ActionBar actionBar = getSupportActionBar();
+//
+//        assert actionBar != null;
+//        actionBar.setHomeButtonEnabled(true);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+//        actionBar.setBackgroundDrawable(colorDrawable);
         setContentView(R.layout.activity_sub_district_list);
 //        ActionBar actionBar = getSupportActionBar();
         district = (String) getIntent().getStringExtra("dis");
@@ -42,6 +46,22 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
         subDistrictListAdaptor = new SubDistrictListAdaptor(district);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(subDistrictListAdaptor);
+        backArrow = findViewById(R.id.back_icon_image);
+
+        topText = findViewById(R.id.top_text);
+
+        topText.setText("Sub Districts");
+
+        districtName = findViewById(R.id.district_name);
+        districtName.setText(district);
+
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 

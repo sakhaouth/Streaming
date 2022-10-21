@@ -12,18 +12,31 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -32,8 +45,14 @@ import java.util.List;
 
 public class SubmitAccessForm extends AppCompatActivity implements ListInterface{
 
-    private TextView formInit;
+    private TextView topText, bellCount;
     private TextInputLayout firstName,lastName, email, designation, about, msg,phoneNumber,message;
+
+    private ImageView backArrow;
+    private ViewGroup bell;
+    private User user;
+    private ImageButton help_access_level,help_district,help_upozilla,help_school;
+
     private Spinner accessLevel, district, upozilla, institute;
     private CheckBox checkInfo;
     private Button submit;
@@ -58,13 +77,12 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_access_form);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
-        actionBar.setBackgroundDrawable(colorDrawable);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setHomeButtonEnabled(true);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+//        actionBar.setBackgroundDrawable(colorDrawable);
         idText = getIntent().getStringExtra("id");
-        formInit = findViewById(R.id.form_init_text);
         firstName = findViewById(R.id.form_first_name);
         lastName = findViewById(R.id.form_last_name);
         email = findViewById(R.id.form_email);
@@ -80,6 +98,152 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
         checkInfo = findViewById(R.id.check_info);
         progressBar = findViewById(R.id.submit_progress);
         submit = findViewById(R.id.access_form_submit);
+
+        topText = findViewById(R.id.top_text);
+
+        topText.setText(R.string.request_access);
+
+
+        backArrow = findViewById(R.id.back_icon_image);
+
+        bellCount = findViewById(R.id.notification_count);
+        bell = findViewById(R.id.notification_bell);
+        user = (User) getIntent().getSerializableExtra("user");
+
+        init();
+
+
+        help_access_level = findViewById(R.id.help_access_level);
+        help_district = findViewById(R.id.help_district);
+        help_upozilla = findViewById(R.id.help_upozilla);
+        help_school = findViewById(R.id.help_instituttion);
+        help_access_level.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // inflate the layout of the popup window
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.help_popup, null);
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                TextView helpText = popupView.findViewById(R.id.help_text);
+                helpText.setText("This a Access Level Suggestion");
+                // dismiss the popup window when touched
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+            }
+        });
+
+        help_district.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // inflate the layout of the popup window
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.help_popup, null);
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                TextView helpText = popupView.findViewById(R.id.help_text);
+                helpText.setText("District Level Suggestion");
+                // dismiss the popup window when touched
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+            }
+        });
+
+        help_upozilla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // inflate the layout of the popup window
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.help_popup, null);
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                TextView helpText = popupView.findViewById(R.id.help_text);
+                helpText.setText("Upozilla Level Suggestion");
+                // dismiss the popup window when touched
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+            }
+        });
+
+        help_school.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // inflate the layout of the popup window
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.help_popup, null);
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                TextView helpText = popupView.findViewById(R.id.help_text);
+                helpText.setText("School Level Suggestion");
+                // dismiss the popup window when touched
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+            }
+        });
+
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         List<String> footballPlayers = new ArrayList<>();
         footballPlayers.add(0, "Select Access Level");
@@ -332,5 +496,27 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
 
 
 
+    }
+
+
+    private void init()
+    {
+        Log.d("req init","request Access initiated");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference(user.getId());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Long notificationNo = snapshot.getValue(Long.class);
+                bellCount.setText(String.valueOf(notificationNo));
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

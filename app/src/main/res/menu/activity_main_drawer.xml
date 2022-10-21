@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_live_stream"
+            android:icon="@drawable/ic_livestreaming"
+            android:title="@string/live_stream" />
+        <item
+            android:id="@+id/nav_notice"
+            android:icon="@drawable/ic_notice"
+            android:title="@string/notice" />
+        <item
+            android:id="@+id/nav_weekly_update"
+            android:icon="@drawable/ic_weekly_update"
+            android:title="@string/weekly_update" />
+    </group>
+
+
+</menu>

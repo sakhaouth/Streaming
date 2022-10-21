@@ -19,7 +19,8 @@
             android:exported="false" />
         <activity
             android:name=".SubmitAccessForm"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".LayerAuthentication"
             android:exported="false" />

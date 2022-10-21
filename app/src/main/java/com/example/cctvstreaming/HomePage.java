@@ -1,15 +1,18 @@
 package com.example.cctvstreaming;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -69,6 +72,8 @@ public class HomePage extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         navigationView_bot = findViewById(R.id.nav_view_bot);
         drawer = findViewById(R.id.drawer_layout);
+        navigationView.setItemIconTintList(null);
+        navigationView_bot.setItemIconTintList(null);
 //        Log.d("Null Check", "onCreate: "+navigationView);
 
 
@@ -84,14 +89,22 @@ public class HomePage extends AppCompatActivity {
 //        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
 
-
+//        toolbar.setNavigationIcon(R.drawable.ic_menu_bar);
         toggle = new ActionBarDrawerToggle(HomePage.this,drawer,toolbar,R.string.open,R.string.close);
+//        toggle = new ActionBarDrawerToggle()
         drawer.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(false);
+
+
+
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_bar);
+
         toggle.syncState();
         menuBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomePage.this, "Menu Called", Toast.LENGTH_SHORT).show();
+                drawer.open();
 
             }
         });
@@ -103,7 +116,33 @@ public class HomePage extends AppCompatActivity {
                 {
                     case R.id.nav_live_stream:
                         Toast.makeText(HomePage.this, "Live Streaming Called", Toast.LENGTH_SHORT).show();
+
                         drawer.closeDrawer(GravityCompat.START);
+                        if(user.getAccessLabel().compareToIgnoreCase("district") == 0)
+                        {
+                            Intent intent = new Intent(getApplicationContext(),SubDistrictList.class);
+                            //intent.putExtra("uri",uri);
+                            intent.putExtra("dis",user.getDistrict());
+                            intent.putExtra("user",user);
+                            startActivity(intent);
+                        }
+                        if(user.getAccessLabel().compareToIgnoreCase("upozilla") == 0)
+                        {
+                            Intent intent = new Intent(getApplicationContext(),SchoolList.class);
+                            //intent.putExtra("uri",uri);
+                            intent.putExtra("dis",user.getDistrict());
+                            intent.putExtra("sub",user.getSubDistrict());
+                            startActivity(intent);
+                        }
+                        if(user.getAccessLabel().compareToIgnoreCase("institution") == 0)
+                        {
+                            Intent intent = new Intent(getApplicationContext(),SchoolList.class);
+                            //intent.putExtra("uri",uri);
+                            intent.putExtra("dis",user.getDistrict());
+                            intent.putExtra("sub",user.getSubDistrict());
+                            intent.putExtra("school",user.getInstitution());
+                            startActivity(intent);
+                        }
                         break;
                 }
                 return true;
@@ -117,6 +156,9 @@ public class HomePage extends AppCompatActivity {
                     case R.id.logout_nav:
                         Toast.makeText(HomePage.this, "Log Out Called", Toast.LENGTH_SHORT).show();
                         drawer.closeDrawer(GravityCompat.START);
+                        Toast.makeText(getApplicationContext(),"Logging Out",Toast.LENGTH_LONG).show();
+                        mAuth.signOut();
+                        startActivity(new Intent(getApplicationContext(),LogIn.class));
                         break;
                     case R.id.request_nav:
                         Toast.makeText(HomePage.this, "Request Access Called", Toast.LENGTH_SHORT).show();
@@ -126,6 +168,7 @@ public class HomePage extends AppCompatActivity {
                         startActivity(intent);
                         drawer.closeDrawer(GravityCompat.START);
                         break;
+
                 }
                 return true;
             }

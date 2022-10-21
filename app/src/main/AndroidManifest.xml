@@ -42,11 +42,13 @@
         <activity
             android:name=".SubDistrictList"
             android:exported="false"
-            android:label="Sub Districts" />
+            android:label="Sub Districts"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".SchoolList"
             android:exported="false"
-            android:label="School List" />
+            android:label="School List"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".MediaPlayer"
             android:configChanges="orientation|screenSize"

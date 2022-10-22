@@ -170,7 +170,6 @@ public class HomePage extends AppCompatActivity {
                         Toast.makeText(HomePage.this, "Request Access Called", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), SubmitAccessForm.class);
                         intent.putExtra("id",user.getId());
-                        intent.putExtra("user",user);
                         startActivity(intent);
                         drawer.closeDrawer(GravityCompat.START);
                         break;

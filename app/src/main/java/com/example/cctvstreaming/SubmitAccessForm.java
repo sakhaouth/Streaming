@@ -109,9 +109,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
 
         bellCount = findViewById(R.id.notification_count);
         bell = findViewById(R.id.notification_bell);
-        user = (User) getIntent().getSerializableExtra("user");
 
-        init();
 
 
         help_access_level = findViewById(R.id.help_access_level);
@@ -332,16 +330,16 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
             }
         });
 
-        bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatabaseController.updateVal(user.getId(),Long.valueOf(-1));
-                Toast.makeText(SubmitAccessForm.this, "Notification Called", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SubmitAccessForm.this,RequestList.class);
-                intent.putExtra("id",user.getId());
-                startActivity(intent);
-            }
-        });
+//        bell.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                DatabaseController.updateVal(user.getId(),Long.valueOf(-1));
+//                Toast.makeText(SubmitAccessForm.this, "Notification Called", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(SubmitAccessForm.this,RequestList.class);
+//                intent.putExtra("id",user.getId());
+//                startActivity(intent);
+//            }
+//        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -571,27 +569,4 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
 
 
 
-
-
-
-    private void init()
-    {
-        Log.d("req init","request Access initiated");
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference(user.getId());
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Long notificationNo = snapshot.getValue(Long.class);
-                bellCount.setText(String.valueOf(notificationNo));
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 }

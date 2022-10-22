@@ -18,6 +18,18 @@
             android:id="@+id/nav_weekly_update"
             android:icon="@drawable/ic_weekly_update"
             android:title="@string/weekly_update" />
+        <item
+            android:id="@+id/message"
+            android:icon="@drawable/ic_msg"
+            android:title="Message" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_set"
+            android:title="Settings" />
+        <item
+            android:id="@+id/help_feed"
+            android:icon="@drawable/ic_weekly_update"
+            android:title="Help &amp; Feedback" />
     </group>
 
 

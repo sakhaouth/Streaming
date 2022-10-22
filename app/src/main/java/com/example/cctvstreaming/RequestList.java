@@ -35,7 +35,7 @@ class Sortbyroll implements Comparator<Notification>
         LocalDateTime dateTime1 = LocalDateTime.parse(t1.getReqTime(),dateTimeFormatter1);
 //        Log.d("ttime",dateTime.toString());
 //        Log.d("ttime",notification.getReqTime());
-        return dateTime.compareTo(dateTime1);
+        return dateTime1.compareTo(dateTime);
     }
 }
 public class RequestList extends AppCompatActivity implements GetNotificationInterface,AcceptInterface{

@@ -47,6 +47,8 @@
     <string name="weekly_update">Weekly Update</string>
     <string name="log_out">Log Out</string>
     <string name="please_fill">Please fill up the form below with correct information</string>
+    <string name="title">A dedicated application for effective supervision of academic institution to ensure quality education</string>
+    <string name="heading">Welcome To \n Laboratory Monitoring And \n Evaluation System</string>
 
     <string-array name="access">
         <item>DC</item>

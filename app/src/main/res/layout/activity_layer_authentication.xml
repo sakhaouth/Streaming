@@ -5,12 +5,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="5dp"
     tools:context=".LayerAuthentication"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#686868"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/heading"
+            android:gravity="center"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="@string/title"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,15 +50,6 @@
         android:visibility="gone"
         tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-        android:id="@+id/welcome_note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_signup_0"
-        android:text="@string/welcome_note"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        />
 
     <TextView
         android:id="@+id/web_portal"
@@ -65,6 +75,53 @@
         android:layout_margin="5dp"
         android:layout_height="wrap_content"
         />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="15dp"
+            android:textColor="@color/red"
+            android:text="Getting Started Guid:\n"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="3"
+        android:gravity="center"
+        android:background="#686868"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Step-1\nClick on\nRequest Access\nButton"
+            android:layout_height="80dp"
+            android:background="@color/white"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:text="Step-2\nFill out\nThe information\nCorrectly"
+            android:layout_height="80dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Step-3\nSubmit your\nRequest for\n Verification"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/request_access"
         android:layout_width="wrap_content"

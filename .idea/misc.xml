@@ -29,6 +29,8 @@
         <entry key="app/src/main/res/drawable/ic_button.xml" value="0.34791666666666665" />
         <entry key="app/src/main/res/drawable/ic_menu_bar.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/drawable/ic_notice.xml" value="0.34791666666666665" />
+        <entry key="app/src/main/res/drawable/ic_profile_background.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/drawable/ic_rectangle_17.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_add_school.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_layer_authentication.xml" value="0.18177083333333333" />
@@ -46,6 +48,7 @@
         <entry key="app/src/main/res/layout/camera_list.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/layout/custom_controller.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/custom_player_control_view.xml" value="0.24739583333333334" />
+        <entry key="app/src/main/res/layout/help_popup.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.18177083333333333" />
         <entry key="app/src/main/res/layout/request_view.xml" value="0.2509057971014493" />
         <entry key="app/src/main/res/layout/school_view.xml" value="0.18177083333333333" />

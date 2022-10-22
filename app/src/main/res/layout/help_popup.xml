@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/primary_2"
+    >
+
 
 
     <androidx.cardview.widget.CardView
@@ -15,8 +18,6 @@
         android:outlineAmbientShadowColor="@color/purple_700"
         android:outlineSpotShadowColor="@color/purple_700"
         app:cardMaxElevation="12dp"
-        android:padding="10dp"
-        android:layout_margin="8dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="#343D44"
                 android:textAlignment="center"

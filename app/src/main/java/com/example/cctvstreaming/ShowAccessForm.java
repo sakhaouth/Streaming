@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class ShowAccessForm extends AppCompatActivity implements AcceptInterface,SignInterface{
 
-    private TextView formError,profileInit,nameShow,profileEmail,number,designation, about, accessLevel,district,subdistrict,message;
+    private TextView formError,nameShow,profileEmail,number,designation, about, accessLevel,district,subdistrict,message;
     private Button accept, reject;
     private String id;
     ProgressBar progressBar;
@@ -40,7 +40,6 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_access_form);
         id = getIntent().getStringExtra("id");
-        profileInit = findViewById(R.id.profile_init_text);
         nameShow = findViewById(R.id.profile_name_show);
         profileEmail = findViewById(R.id.profile_email);
         number =findViewById(R.id.profile_number);

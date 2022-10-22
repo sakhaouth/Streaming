@@ -4,35 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubmitAccessForm">
+    tools:context=".ShowAccessForm">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
+        android:padding="16dp"
 
         >
-        <TextView
-            android:id="@+id/profile_init_text"
+
+
+        <ImageView
+            android:id="@+id/form_init_text"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/verify_user"/>
+            app:srcCompat="@drawable/ic_form_init_box" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="-65dp">
+            <TextView
+                android:id="@+id/please_fill"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:text="@string/verify_user"
+                android:textAppearance="@style/please_fill"
+                android:fontFeatureSettings="pnum, lnum"
+                android:lineSpacingExtra="0sp"
+                android:gravity="center_vertical"
+                />
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_task_square"/>
+
+        </LinearLayout>
+
+
         <androidx.cardview.widget.CardView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:elevation="12dp"
             android:id="@+id/card_profile"
             app:cardCornerRadius="40dp"
             android:innerRadius="0dp"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:shape="ring"
             android:thicknessRatio="1.9">
             <ImageView
                 android:layout_height="80dp"
-                android:layout_width="match_parent"
+                android:layout_width="80dp"
+                android:layout_gravity="center"
                 android:id="@+id/add_image"
-                android:src="@drawable/ic_baseline_add_24">
+                android:src="@drawable/ic_camera">
             </ImageView>
         </androidx.cardview.widget.CardView>
         <com.google.android.material.textfield.TextInputLayout
@@ -44,7 +79,7 @@
             android:hint="@string/name"
             android:inputType="text"
             app:boxStrokeColor="@color/teal_700"
-
+            android:layout_marginTop="8dp"
             app:hintTextColor="@color/red"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +101,7 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:boxStrokeColor="@color/teal_700"
+            android:layout_marginTop="8dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +122,7 @@
             android:hint="@string/number"
             android:inputType="number"
             app:boxStrokeColor="@color/teal_700"
+            android:layout_marginTop="8dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +143,7 @@
             android:hint="@string/designation"
             android:inputType="text"
             app:boxStrokeColor="@color/teal_700"
+            android:layout_marginTop="8dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -132,6 +170,7 @@
             android:hint="@string/district"
             android:inputType="textLongMessage"
             app:boxStrokeColor="@color/teal_700"
+            android:layout_marginTop="8dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +192,7 @@
             android:hint="@string/sub_district"
             android:inputType="textLongMessage"
             app:boxStrokeColor="@color/teal_700"
+            android:layout_marginTop="8dp"
 
             app:hintTextColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
@@ -177,9 +217,10 @@
             android:thicknessRatio="1.9">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:orientation="vertical"
                 android:gravity="center"
+                android:layout_marginTop="8dp"
                 >
 
                 <ImageView
@@ -210,6 +251,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/red"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:id="@+id/formError"
             />
@@ -217,8 +259,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             >
+
 <!--            <Button-->
 <!--                android:id="@+id/profile_accept"-->
 <!--                android:layout_width="wrap_content"-->

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class ShowAccessForm extends AppCompatActivity implements AcceptInterface,SignInterface{
 
-    private TextView formError,profileInit,nameShow,profileEmail,number,designation, about, accessLevel,district,subdistrict,message;
+    private TextView formError,nameShow,profileEmail,number,designation, about, accessLevel,district,subdistrict,message;
     private Button accept, reject;
     private String id;
     ProgressBar progressBar;
@@ -36,10 +36,10 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         actionBar.setDisplayHomeAsUpEnabled(true);
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
         actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_square_left);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_access_form);
         id = getIntent().getStringExtra("id");
-        profileInit = findViewById(R.id.profile_init_text);
         nameShow = findViewById(R.id.profile_name_show);
         profileEmail = findViewById(R.id.profile_email);
         number =findViewById(R.id.profile_number);
@@ -55,6 +55,7 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         reject = findViewById(R.id.profile_reject);
 
         progressBar.setVisibility(View.VISIBLE);
+        accept.setVisibility(View.GONE);
         DatabaseController.getUser(id,this);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +103,9 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         district.setInputType(0);
         subdistrict.setText(user.getSubDistrict());
         subdistrict.setInputType(0);
-        if(user.getStatus().compareToIgnoreCase("ok") == 0)
+        if(user.getStatus().compareToIgnoreCase("ok") != 0)
         {
-            accept.setVisibility(View.GONE);
+            accept.setVisibility(View.VISIBLE);
         }
 
     }

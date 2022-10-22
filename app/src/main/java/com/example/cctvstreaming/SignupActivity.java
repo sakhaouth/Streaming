@@ -24,8 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignupActivity extends AppCompatActivity implements SignUpInterface{
     private TextInputLayout emailTextView,passwordTextView, confirmPassTextView;
-    private TextView message;
-    private Button signup,signin;
+    private TextView message, signin;
+    private Button signup;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
@@ -33,14 +33,14 @@ public class SignupActivity extends AppCompatActivity implements SignUpInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        ActionBar actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
-        actionBar.setBackgroundDrawable(colorDrawable);
+//        ActionBar actionBar = getSupportActionBar();
+//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+//        actionBar.setBackgroundDrawable(colorDrawable);
         emailTextView = findViewById(R.id.client_sign_email);
         passwordTextView = findViewById(R.id.client_sign_password);
         confirmPassTextView = findViewById(R.id.client_sign_password_2);
         message = findViewById(R.id.client_sign_message_view);
-        signin = findViewById(R.id.client_signin_button);
+        signin = findViewById(R.id.client_signin_text);
         signup = findViewById(R.id.client_sign_button);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.sign_progress);

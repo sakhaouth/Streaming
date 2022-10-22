@@ -15,8 +15,29 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
+class Sortbyroll implements Comparator<Notification>
+{
+    // Used for sorting in ascending order of
+    // roll number
+
+
+    @Override
+    public int compare(Notification notification, Notification t1) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(notification.getReqTime(),dateTimeFormatter);
+        DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        LocalDateTime dateTime1 = LocalDateTime.parse(t1.getReqTime(),dateTimeFormatter1);
+//        Log.d("ttime",dateTime.toString());
+//        Log.d("ttime",notification.getReqTime());
+        return dateTime1.compareTo(dateTime);
+    }
+}
 public class RequestList extends AppCompatActivity implements GetNotificationInterface,AcceptInterface{
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
@@ -30,6 +51,8 @@ public class RequestList extends AppCompatActivity implements GetNotificationInt
 
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setIcon(R.drawable.ic_arrow_square_left);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_square_left);
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
         actionBar.setBackgroundDrawable(colorDrawable);
         recyclerView = (RecyclerView) findViewById(R.id.requestListRecyclerView);
@@ -55,6 +78,7 @@ public class RequestList extends AppCompatActivity implements GetNotificationInt
         {
             return;
         }
+        Collections.sort(notifications,new Sortbyroll());
         requestListAdaptor.setList(notifications);
     }
     @Override
@@ -68,6 +92,7 @@ public class RequestList extends AppCompatActivity implements GetNotificationInt
             case android.R.id.home:
                 this.finish();
         }
+
         return super.onOptionsItemSelected(item);
 
 

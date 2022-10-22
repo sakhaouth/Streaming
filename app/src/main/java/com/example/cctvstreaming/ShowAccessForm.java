@@ -56,6 +56,7 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         reject = findViewById(R.id.profile_reject);
 
         progressBar.setVisibility(View.VISIBLE);
+        accept.setVisibility(View.GONE);
         DatabaseController.getUser(id,this);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +104,9 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         district.setInputType(0);
         subdistrict.setText(user.getSubDistrict());
         subdistrict.setInputType(0);
-        if(user.getStatus().compareToIgnoreCase("ok") == 0)
+        if(user.getStatus().compareToIgnoreCase("ok") != 0)
         {
-            accept.setVisibility(View.GONE);
+            accept.setVisibility(View.VISIBLE);
         }
 
     }

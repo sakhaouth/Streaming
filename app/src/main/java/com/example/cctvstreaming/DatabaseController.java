@@ -206,7 +206,7 @@ public class DatabaseController {
                     }
                 });
     }
-    public static void acceptReq(String dis,String sub,String senderId,String designation,AcceptInterface acceptInterface)
+    public static void acceptReq(String dis,String sub,String senderId,String designation,String notId,AcceptInterface acceptInterface)
     {
         firebaseFirestore.collection("Users")
                 .document(senderId)
@@ -214,6 +214,9 @@ public class DatabaseController {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        firebaseFirestore.collection("Notifications")
+                                .document(notId)
+                                .update("notificationId","ok");
                         if(designation.compareToIgnoreCase("uno") == 0)
                         {
                             setUno(dis,sub,senderId);
@@ -314,9 +317,12 @@ public class DatabaseController {
                             senderId= (String) documentSnapshot.get("senderId");
                             recId = (String) documentSnapshot.get("recId");
                             reqTime = (String) documentSnapshot.get("reqTime");
-                            notificationId = documentSnapshot.getId();
-
+                            notificationId = (String) documentSnapshot.get("notificationId");
+                            if(notificationId == null)
+                                notificationId = documentSnapshot.getId();
+                            Log.d("hello",notificationId);
                             Notification notification = new Notification(description,senderId,senderName,reqTime,subject,recId,notificationId);
+                            notification.setNotificationId(notificationId);
                             Log.d("nnnnn",String.valueOf(id.length())+" "+ String.valueOf(recId.length()));
                             Log.d("nn",id);
 

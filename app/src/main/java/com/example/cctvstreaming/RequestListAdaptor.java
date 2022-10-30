@@ -1,5 +1,6 @@
 package com.example.cctvstreaming;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,11 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDateTime;
@@ -42,6 +45,7 @@ public class RequestListAdaptor extends RecyclerView.Adapter<RequestListAdaptor.
         return new RequestListAdaptor.ViewHolder(view);
     }
 
+    @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull RequestListAdaptor.ViewHolder holder, int position) {
@@ -52,12 +56,18 @@ public class RequestListAdaptor extends RecyclerView.Adapter<RequestListAdaptor.
         LocalDateTime dateTime = LocalDateTime.parse(notifications.get(position).getReqTime(),dateTimeFormatter);
         Log.d("time",dateTime.toString());
         holder.reqTime.setText(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).format(dateTime));
+        Log.d("mobile",notifications.get(position).getNotificationId());
+        if(notifications.get(position).getNotificationId().compareToIgnoreCase("ok") != 0)
+        {
+            holder.cardView.setBackgroundColor(R.color.primary_2);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                notifications.get(position).getSenderId()
                 Intent intent = new Intent(context,ShowAccessForm.class);
                 intent.putExtra("id",notifications.get(position).getSenderId());
+                intent.putExtra("notId",notifications.get(position).getNotificationId());
                 context.startActivity(intent);
             }
         });
@@ -72,10 +82,12 @@ public class RequestListAdaptor extends RecyclerView.Adapter<RequestListAdaptor.
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView reqDes;
         private TextView reqTime;
+        private LinearLayout cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             reqDes = (TextView) itemView.findViewById(R.id.reqDes);
             reqTime = (TextView) itemView.findViewById(R.id.reqTime);
+            cardView = (LinearLayout) itemView.findViewById(R.id.req_container);
 
         }
     }

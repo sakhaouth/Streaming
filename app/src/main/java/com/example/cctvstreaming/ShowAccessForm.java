@@ -28,6 +28,7 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
     private String id;
     ProgressBar progressBar;
     User user;
+    String notId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
@@ -40,6 +41,7 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_access_form);
         id = getIntent().getStringExtra("id");
+        notId = getIntent().getStringExtra("notId");
         nameShow = findViewById(R.id.profile_name_show);
         profileEmail = findViewById(R.id.profile_email);
         number =findViewById(R.id.profile_number);
@@ -62,7 +64,7 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
             public void onClick(View view) {
                 if(user != null)
                 {
-                    DatabaseController.acceptReq(user.getDistrict(), user.getSubDistrict(),user.getId(),user.getRecognition(),ShowAccessForm.this);
+                    DatabaseController.acceptReq(user.getDistrict(), user.getSubDistrict(),user.getId(),user.getRecognition(),notId,ShowAccessForm.this);
                 }
             }
         });

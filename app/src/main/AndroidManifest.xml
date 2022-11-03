@@ -12,14 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CCTVStreaming">
         <activity
-            android:name=".ShowAccessForm"
+            android:name=".UserProfile"
             android:exported="false" />
+        <activity
+            android:name=".ShowAccessForm"
+            android:exported="false"
+            android:label="Profile" />
         <activity
             android:name=".RequestList"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Notifications" />
         <activity
             android:name=".SubmitAccessForm"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar" />
         <activity
             android:name=".LayerAuthentication"
             android:exported="false" />
@@ -29,7 +35,7 @@
         <activity
             android:name=".SignupActivity"
             android:exported="false"
-            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar" />
         <activity
             android:name=".HomePage"
             android:exported="false"
@@ -37,15 +43,17 @@
         <activity
             android:name=".LogIn"
             android:exported="false"
-            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar" />
         <activity
             android:name=".SubDistrictList"
             android:exported="false"
-            android:label="Sub Districts" />
+            android:label="Sub Districts"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".SchoolList"
             android:exported="false"
-            android:label="School List" />
+            android:label="School List"
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar"/>
         <activity
             android:name=".MediaPlayer"
             android:configChanges="orientation|screenSize"

@@ -31,9 +31,10 @@ public class LayerAuthentication extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
         actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_square_left);
         setContentView(R.layout.activity_layer_authentication);
         signOut = (Button) findViewById(R.id.request_signOut);
-        welcome = findViewById(R.id.welcome_note);
+//        welcome = findViewById(R.id.welcome_note);
         webPortal = findViewById(R.id.web_portal);
         userManual = findViewById(R.id.user_manual);
         verify = findViewById(R.id.verify_text);

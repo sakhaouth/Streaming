@@ -16,7 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -26,15 +28,17 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
     ArrayList<School> schools = new ArrayList<>();
     SchoolListAdaptor schoolListAdaptor = new SchoolListAdaptor(this);
     private ProgressBar progressBar;
+    private ImageView backArrow;
+    private TextView topText,districtName,upozillaName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
-        actionBar.setBackgroundDrawable(colorDrawable);
+//        ActionBar actionBar = getSupportActionBar();
+//
+//        actionBar.setHomeButtonEnabled(true);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#674AAE"));
+//        actionBar.setBackgroundDrawable(colorDrawable);
         setContentView(R.layout.activity_school_list);
         progressBar = (ProgressBar) findViewById(R.id.schoolListProgressBar);
         String dis = (String) getIntent().getStringExtra("dis");
@@ -52,6 +56,26 @@ public class SchoolList extends AppCompatActivity implements SchoolListInterface
         recyclerView = (RecyclerView) findViewById(R.id.school_list_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(schoolListAdaptor);
+
+        backArrow = findViewById(R.id.back_icon_image);
+
+        topText = findViewById(R.id.top_text);
+
+        topText.setText("Sub Districts");
+
+        districtName = findViewById(R.id.district_name);
+        upozillaName = findViewById(R.id.upozilla_name);
+        districtName.setText(dis);
+        upozillaName.setText(sub);
+
+
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
     private void fetchSchools(String district,String subDistrict)

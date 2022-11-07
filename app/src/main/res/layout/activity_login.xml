@@ -14,24 +14,33 @@
     android:gravity="center"
     tools:context=".LogIn">
 
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-    </ImageView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="201dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="24dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/ic_login_reactangle"
         android:gravity="center_horizontal"
@@ -41,81 +50,87 @@
         <TextView
             android:id="@+id/textView17"
             android:layout_width="259dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="49dp"
             android:fontFamily="@font/roboto_bold"
             android:text="WELCOME BACK!"
             android:textAlignment="center"
             android:textColor="@color/dark"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView18"
+            tools:layout_editor_absoluteX="52dp" />
 
         <TextView
             android:id="@+id/textView18"
             android:layout_width="259dp"
             android:layout_height="34dp"
-            android:layout_marginTop="8dp"
             android:text="Please put your log in credentials to start using the app"
             android:textAlignment="center"
             android:textColor="@color/dark"
-            android:textSize="14sp" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/client_login_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="80dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/type_email"
-            android:inputType="textEmailAddress"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="52dp"
+            tools:layout_editor_absoluteY="63dp" />
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/client_login_email"-->
+        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="60dp"-->
+        <!--            android:layout_marginTop="80dp"-->
+        <!--            android:ems="10"-->
+        <!--            android:gravity="center"-->
+        <!--            android:hint="@string/type_email"-->
+        <!--            android:inputType="textEmailAddress"-->
 
-            android:textColorHint="@color/dark_0"
-            app:boxStrokeColor="@color/dark"
-            app:hintTextColor="@color/violet"
-            app:layout_constraintTop_toBottomOf="@+id/textView18"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="30dp">
+        <!--            android:textColorHint="@color/dark_0"-->
+        <!--            app:boxStrokeColor="@color/dark"-->
+        <!--            app:hintTextColor="@color/violet"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/textView18"-->
+        <!--            tools:ignore="MissingConstraints"-->
+        <!--            tools:layout_editor_absoluteX="30dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:background="@drawable/ic_text_filed"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!--            <com.google.android.material.textfield.TextInputEditText-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="50dp"-->
+        <!--                android:paddingBottom="3dp"-->
+        <!--                android:paddingTop="3dp"-->
+        <!--                android:background="@drawable/ic_text_filed"-->
+        <!--                android:inputType="textEmailAddress" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/client_login_password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/type_password"
-            android:inputType="textPassword"
-            android:textColorHint="@color/dark_0"
-            app:boxStrokeColor="@color/dark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/client_login_email"
-            app:passwordToggleEnabled="true">
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/client_login_password"-->
+        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="60dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:ems="10"-->
+        <!--            android:gravity="center"-->
+        <!--            android:hint="@string/type_password"-->
+        <!--            android:inputType="textPassword"-->
+        <!--            android:textColorHint="@color/dark_0"-->
+        <!--            app:boxStrokeColor="@color/dark"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/client_login_email"-->
+        <!--            app:passwordToggleEnabled="true">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:background="@drawable/ic_text_filed"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!--            <com.google.android.material.textfield.TextInputEditText-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="50dp"-->
+        <!--                android:paddingTop="3dp"-->
+        <!--                android:paddingBottom="3dp"-->
+        <!--                android:background="@drawable/ic_text_filed"-->
+        <!--                android:inputType="textPassword" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <TextView
-            android:id="@+id/forgot_password"
-            android:layout_width="302dp"
-            android:layout_height="17dp"
-            android:layout_marginTop="16dp"
-            android:text="Forgot Password?"
-            android:textColor="@color/violet"
-            app:layout_constraintTop_toBottomOf="@+id/client_login_password" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/forgot_password"-->
+        <!--            android:layout_width="302dp"-->
+        <!--            android:layout_height="17dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:text="Forgot Password?"-->
+        <!--            android:textColor="@color/violet"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/client_login_password" />-->
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

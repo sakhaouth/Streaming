@@ -21,7 +21,7 @@
         <activity
             android:name=".RequestList"
             android:exported="false"
-            android:label="Notifications" />
+            android:theme="@style/Theme.CCTVStreaming.NoActionBar" />
         <activity
             android:name=".SubmitAccessForm"
             android:exported="false"

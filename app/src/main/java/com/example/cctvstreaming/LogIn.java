@@ -59,7 +59,7 @@ public class LogIn extends AppCompatActivity implements SignInterface {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"as",Toast.LENGTH_SHORT);
+                //Toast.makeText(getApplicationContext(),"as",Toast.LENGTH_SHORT);
                 Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
                 startActivity(intent);
             }

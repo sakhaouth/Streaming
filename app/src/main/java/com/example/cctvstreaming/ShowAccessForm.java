@@ -76,7 +76,7 @@ public class ShowAccessForm extends AppCompatActivity implements AcceptInterface
 
     @Override
     public void onComplete(String msg) {
-        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
         finish();
     }
 

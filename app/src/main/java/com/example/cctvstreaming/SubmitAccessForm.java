@@ -295,7 +295,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
                     String item = parent.getItemAtPosition(position).toString();
                     accessLabelText = item;
                     DatabaseController.getDistrictList(listInterface);
-                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
@@ -322,7 +322,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
                     String item = parent.getItemAtPosition(position).toString();
                     recognitionText = item;
 //                    DatabaseController.getDistrictList(listInterface);
-                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
@@ -460,7 +460,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
                         {
                             DatabaseController.getSubDisList(districtText,listInterface);
                         }
-                        Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override
@@ -496,7 +496,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
                         {
                             DatabaseController.getSchoolDisList(districtText,subDistrictText,listInterface);
                         }
-                        Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override
@@ -528,7 +528,7 @@ public class SubmitAccessForm extends AppCompatActivity implements ListInterface
                     }else {
                         String item = parent.getItemAtPosition(position).toString();
                         schoolName = item;
-                        Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override

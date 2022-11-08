@@ -97,12 +97,12 @@ public class SignupActivity extends AppCompatActivity implements SignUpInterface
         signup.setVisibility(View.VISIBLE);
         if(message.compareTo("ok") == 0)
         {
-            Toast.makeText(SignupActivity.this,"User Registered Successfully", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(SignupActivity.this,"User Registered Successfully", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(),LogIn.class));
         }
         else
         {
-            Toast.makeText(SignupActivity.this,"User Registration Failed" + message, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(SignupActivity.this,"User Registration Failed" + message, Toast.LENGTH_SHORT).show();
         }
 
     }

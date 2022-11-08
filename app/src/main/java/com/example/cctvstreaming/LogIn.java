@@ -59,7 +59,9 @@ public class LogIn extends AppCompatActivity implements SignInterface {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //Toast.makeText(getApplicationContext(),"as",Toast.LENGTH_SHORT);
+
                 Intent intent = new Intent(getApplicationContext(),SignupActivity.class);
                 startActivity(intent);
             }
@@ -107,7 +109,7 @@ public class LogIn extends AppCompatActivity implements SignInterface {
 
         if(user == null)
         {
-            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
         }
         else if(user.getName() == null)
         {
@@ -126,7 +128,7 @@ public class LogIn extends AppCompatActivity implements SignInterface {
         }
         else if(user.getStatus().compareTo("ok") == 0)
         {
-            Toast.makeText(LogIn.this,"User Logged In Successfully", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(LogIn.this,"User Logged In Successfully", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(),HomePage.class);
             Log.d("userName",user.getEmail());
             intent.putExtra("user", user);

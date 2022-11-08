@@ -86,7 +86,9 @@ public class HomePage extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("user");
 
         calender = findViewById(R.id.calender_icon);
-//        Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
+
+        //Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
+
         init();
 //        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
@@ -130,6 +132,7 @@ public class HomePage extends AppCompatActivity {
                             //intent.putExtra("uri",uri);
                             intent.putExtra("dis",user.getDistrict());
                             intent.putExtra("user",user);
+                            intent.putExtra("id",user.getId());
                             startActivity(intent);
                         }
                         if(user.getAccessLabel().compareToIgnoreCase("upozilla") == 0)
@@ -138,6 +141,8 @@ public class HomePage extends AppCompatActivity {
                             //intent.putExtra("uri",uri);
                             intent.putExtra("dis",user.getDistrict());
                             intent.putExtra("sub",user.getSubDistrict());
+                            System.out.println(user.getId());
+                            intent.putExtra("id",user.getId());
                             startActivity(intent);
                         }
                         if(user.getAccessLabel().compareToIgnoreCase("institution") == 0)
@@ -147,6 +152,8 @@ public class HomePage extends AppCompatActivity {
                             intent.putExtra("dis",user.getDistrict());
                             intent.putExtra("sub",user.getSubDistrict());
                             intent.putExtra("school",user.getInstitution());
+                            System.out.println(user.getId());
+                            intent.putExtra("id",user.getId());
                             startActivity(intent);
                         }
                         break;
@@ -225,6 +232,7 @@ public class HomePage extends AppCompatActivity {
                     //intent.putExtra("uri",uri);
                     intent.putExtra("dis",user.getDistrict());
                     intent.putExtra("user",user);
+                    intent.putExtra("id",user.getId());
                     startActivity(intent);
                 }
                 if(user.getAccessLabel().compareToIgnoreCase("upozilla") == 0)

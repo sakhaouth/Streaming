@@ -6,15 +6,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -25,7 +34,9 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
     private SubDistrictListAdaptor subDistrictListAdaptor;
     private ImageView backArrow;
     private TextView topText, districtName;
-    User user;
+    private String userId;
+    private TextView bellCount;
+    private ViewGroup bell;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +50,23 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
         setContentView(R.layout.activity_sub_district_list);
 //        ActionBar actionBar = getSupportActionBar();
         district = (String) getIntent().getStringExtra("dis");
+        userId = (String) getIntent().getStringExtra("id");
+
         recyclerView = (RecyclerView) findViewById(R.id.sub_district_recycler_view);
         progressBar = (ProgressBar) findViewById(R.id.sub_district_progressBar);
         Log.d("district",district);
         fetchData(district);
-        subDistrictListAdaptor = new SubDistrictListAdaptor(district);
+        subDistrictListAdaptor = new SubDistrictListAdaptor(district, userId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(subDistrictListAdaptor);
         backArrow = findViewById(R.id.back_icon_image);
+
+        Log.d("start", "start");
+        bellCount = findViewById(R.id.notification_count);
+        bell = findViewById(R.id.notification_bell);
+        Log.d("end", userId);
+        init();
+
 
         topText = findViewById(R.id.top_text);
 
@@ -60,6 +80,16 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseController.updateVal(userId,Long.valueOf(-1));
+                Intent intent = new Intent(SubDistrictList.this,RequestList.class);
+                intent.putExtra("id",userId);
+                startActivity(intent);
             }
         });
 
@@ -90,7 +120,26 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
         }
         return super.onOptionsItemSelected(item);
 
+    }
 
 
+    private void init()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference(userId);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Long notificationNo = snapshot.getValue(Long.class);
+                bellCount.setText(String.valueOf(notificationNo));
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

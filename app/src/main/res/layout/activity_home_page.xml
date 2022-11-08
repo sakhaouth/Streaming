@@ -88,6 +88,8 @@
         app:srcCompat="@drawable/home_image"
         tools:layout_editor_absoluteX="0dp" />
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -3,7 +3,6 @@
 
 
 
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -185,7 +184,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/client_sign_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/ic_button"
                 android:text="Sign Up"

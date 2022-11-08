@@ -16,17 +16,19 @@
 
     <TextView
         android:id="@+id/notification_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:textSize="18sp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:textColor="@color/white"
+        android:textSize="11dp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/ic_small_circle"
         app:layout_constraintBottom_toBottomOf="@+id/notification_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.1"
         tools:ignore="MissingConstraints">
 
     </TextView>

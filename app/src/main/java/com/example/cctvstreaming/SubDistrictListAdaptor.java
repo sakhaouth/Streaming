@@ -16,12 +16,13 @@ import java.util.ArrayList;
 public class SubDistrictListAdaptor extends RecyclerView.Adapter<SubDistrictListAdaptor.ViewHolder>{
     private ArrayList<SubDistrict> subDistricts;
     private String subDistrictName;
-    private String districtName;
-    public SubDistrictListAdaptor(String districtName)
+    private String districtName, userId;
+    public SubDistrictListAdaptor(String districtName, String userId)
     {
 
         this.subDistricts = new ArrayList<>();
         this.districtName = districtName;
+        this.userId = userId;
     }
 
     @NonNull
@@ -45,6 +46,7 @@ public class SubDistrictListAdaptor extends RecyclerView.Adapter<SubDistrictList
                 Intent intent = new Intent(holder.itemView.getContext(),SchoolList.class);
                 intent.putExtra("dis",districtName);
                 intent.putExtra("sub",subDistricts.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("id", userId);
                 holder.itemView.getContext().startActivity(intent);
 
             }

@@ -139,6 +139,8 @@ public class HomePage extends AppCompatActivity {
                             //intent.putExtra("uri",uri);
                             intent.putExtra("dis",user.getDistrict());
                             intent.putExtra("sub",user.getSubDistrict());
+                            System.out.println(user.getId());
+                            intent.putExtra("id",user.getId());
                             startActivity(intent);
                         }
                         if(user.getAccessLabel().compareToIgnoreCase("institution") == 0)
@@ -148,6 +150,8 @@ public class HomePage extends AppCompatActivity {
                             intent.putExtra("dis",user.getDistrict());
                             intent.putExtra("sub",user.getSubDistrict());
                             intent.putExtra("school",user.getInstitution());
+                            System.out.println(user.getId());
+                            intent.putExtra("id",user.getId());
                             startActivity(intent);
                         }
                         break;

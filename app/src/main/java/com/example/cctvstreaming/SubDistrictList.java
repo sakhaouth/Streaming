@@ -56,7 +56,7 @@ public class SubDistrictList extends AppCompatActivity implements SubDistrictInt
         progressBar = (ProgressBar) findViewById(R.id.sub_district_progressBar);
         Log.d("district",district);
         fetchData(district);
-        subDistrictListAdaptor = new SubDistrictListAdaptor(district);
+        subDistrictListAdaptor = new SubDistrictListAdaptor(district, userId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(subDistrictListAdaptor);
         backArrow = findViewById(R.id.back_icon_image);

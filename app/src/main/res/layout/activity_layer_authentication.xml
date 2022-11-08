@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,7 +18,7 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#686868"
+        android:background="@color/violet"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:orientation="vertical">
@@ -28,6 +34,7 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             android:text="@string/title"
+            android:gravity="center"
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <TextView
@@ -54,7 +61,7 @@
     <TextView
         android:id="@+id/web_portal"
         android:layout_width="match_parent"
-        android:layout_margin="5dp"
+        android:layout_margin="20dp"
         android:layout_height="wrap_content"
         android:text="@string/web_portal"
         android:background="@drawable/ic_signup_0"
@@ -65,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_manual"
-        android:layout_margin="5dp"
+        android:layout_margin="20dp"
         android:background="@drawable/ic_signup_0"
         android:gravity="center"
         />
@@ -81,15 +88,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:textSize="15dp"
-            android:textColor="@color/red"
-            android:text="Getting Started Guid:\n"
+            android:textColor="@color/dark"
+            android:text="Getting Started Guide:\n"
+            android:gravity="left"
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:weightSum="3"
         android:gravity="center"
-        android:background="#686868"
+        android:background="@color/white"
         android:padding="5dp"
         android:layout_height="wrap_content">
         <TextView
@@ -99,14 +107,14 @@
             android:textColor="@color/black"
             android:text="Step-1\nClick on\nRequest Access\nButton"
             android:layout_height="80dp"
-            android:background="@color/white"
+            android:background="@drawable/ic_guide_rectangle"
             android:layout_weight="1"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
             android:textColor="@color/black"
-            android:background="@color/white"
+            android:background="@drawable/ic_guide_rectangle"
             android:text="Step-2\nFill out\nThe information\nCorrectly"
             android:layout_height="80dp"
             android:layout_weight="1"/>
@@ -117,7 +125,7 @@
             android:textColor="@color/black"
             android:text="Step-3\nSubmit your\nRequest for\n Verification"
             android:layout_margin="10dp"
-            android:background="@color/white"
+            android:background="@drawable/ic_guide_rectangle"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -165,4 +173,4 @@
 
 </LinearLayout>
 
-
+</ScrollView>

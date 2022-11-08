@@ -86,7 +86,7 @@ public class HomePage extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("user");
 
         calender = findViewById(R.id.calender_icon);
-        Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_SHORT).show();
         init();
 //        DatabaseController.getDc("Comilla",getBaseContext());
 //        DatabaseController.updateVal("aa");
@@ -105,7 +105,7 @@ public class HomePage extends AppCompatActivity {
         menuBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomePage.this, "Menu Called", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomePage.this, "Menu Called", Toast.LENGTH_SHORT).show();
                 drawer.open();
                 userName = (TextView) findViewById(R.id.user_name);
                 userEmail = findViewById(R.id.user_email);
@@ -121,7 +121,7 @@ public class HomePage extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.nav_live_stream:
-                        Toast.makeText(HomePage.this, "Live Streaming Called", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(HomePage.this, "Live Streaming Called", Toast.LENGTH_SHORT).show();
 
                         drawer.closeDrawer(GravityCompat.START);
                         if(user.getAccessLabel().compareToIgnoreCase("district") == 0)
@@ -160,14 +160,14 @@ public class HomePage extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.logout_nav:
-                        Toast.makeText(HomePage.this, "Log Out Called", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(HomePage.this, "Log Out Called", Toast.LENGTH_SHORT).show();
                         drawer.closeDrawer(GravityCompat.START);
-                        Toast.makeText(getApplicationContext(),"Logging Out",Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(),"Logging Out",Toast.LENGTH_LONG).show();
                         mAuth.signOut();
                         startActivity(new Intent(getApplicationContext(),LogIn.class));
                         break;
                     case R.id.request_nav:
-                        Toast.makeText(HomePage.this, "Request Access Called", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(HomePage.this, "Request Access Called", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), SubmitAccessForm.class);
                         intent.putExtra("id",user.getId());
                         startActivity(intent);
@@ -192,14 +192,14 @@ public class HomePage extends AppCompatActivity {
         calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomePage.this, "Calender Called", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomePage.this, "Calender Called", Toast.LENGTH_SHORT).show();
             }
         });
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatabaseController.updateVal(user.getId(),Long.valueOf(-1));
-                Toast.makeText(HomePage.this, "Notification Called", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomePage.this, "Notification Called", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(HomePage.this,RequestList.class);
                 intent.putExtra("id",user.getId());
                 startActivity(intent);
@@ -210,7 +210,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getApplicationContext(),"Logging Out",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"Logging Out",Toast.LENGTH_LONG).show();
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(),LogIn.class));
             }

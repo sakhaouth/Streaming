@@ -65,12 +65,12 @@ public class MediaPlayer extends AppCompatActivity {
                 @Override
                 public void onPlayerError(@NonNull PlaybackException error) {
 
-                    Toast.makeText(MediaPlayer.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MediaPlayer.this,error.getMessage(),Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onRenderedFirstFrame() {
-                    Toast.makeText(MediaPlayer.this,"Streaming Started",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MediaPlayer.this,"Streaming Started",Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -87,7 +87,7 @@ public class MediaPlayer extends AppCompatActivity {
         }
         catch (Exception exception)
         {
-            Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();
         }
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
